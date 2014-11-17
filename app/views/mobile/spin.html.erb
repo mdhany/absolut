@@ -1,24 +1,35 @@
 <div id="ru">
-<h1 class="mbottom text-hide"><%= image_tag 'tl-giraygana.png' %>¡Gira y Gana!</h1>
-  <p>Gira la botella presionándola</p>
-<div class="ruleta">
-  <%= image_tag 'bottle.png', id: 'botella' %>
-  <%= image_tag 'ruleta.png', id: 'ruleta' %>
+<h1 class="mbottom text-hide"><%= image_tag 'tl-presiona.png' %>¡Presiona y Gana!</h1>
+  <div class="botones">
+    <% @gifts.each_with_index do |g, i| %>
+        <% if g.inventory > 0 %>
+            <div class="flip3D">
+                <div class="back" id="<%= g.id %>" nombre="<%= g.name %>"><%= image_tag g.image %></div>
+                <div class="front"><%= image_tag "c-#{i+1}.png" %></div>
+            </div>
+        <% else %>
+            <div class="nul-flip">
+                <div class="nulo"><%= image_tag "cb-nodisponible.png" %></div>
+              </div>
 
-</div>
+        <% end %>
+    <% end %>
+
+    <div class="clearfix"></div>
+  </div>
+
 </div>
 
 <div id="win" style="display: none;">
   <h1 class="mbottom text-hide"><%= image_tag 'tl-felicidades.png' %>¡Felicidades!</h1>
-  <div class="center-block fondo-gris">
+  <div class="left-block">
     <div class="row">
-        <div class="mitad"><%= image_tag "#{@win.image}", class: 'img-responsive img-left' %></div>
-        <div class="mitad">
-        <h1 class="mbottom">HAS GANADO</h1>
-        <p class="mbottom"><%= @win.name %></p>
+        <div class="col-md-4 col-md-offset-2" id="win-img"><%= image_tag "", class: 'img-responsive img-left' %></div>
+        <div class="col-md-6">
+        <h1 class="mbottom" id="ganaste">Has ganado <br/></h1>
             <%= form_tag({action: :save_gift}) do %>
-                <%= hidden_field_tag :gift_id, @win.id %>
-                <%= image_submit_tag 'btn-continuar.png' %>
+                <%= hidden_field_tag :gift_id, "" %>
+                <%= submit_tag 'Continuar', class: 'e-no btn btn-lg' %>
         <% end %>
         </div>
     </div>
@@ -26,25 +37,32 @@
   </div>
 </div>
 
-<%= javascript_tag do %>
-    $('#botella').click(function() {
-    var deg = <%= @win.position + 3600 %>;
-    var css = '-webkit-transform: rotate(' + deg + 'deg);';
-    $(this).attr('style', css);
-
-    setTimeout(function(){
-    $( "#ru" ).slideUp( "fast" ),
-    $( "#win" ).slideDown( "fast" );
-    }, 12000);
-    });
-
-
-<% end %>
 <script type="text/javascript" charset="utf-8">
     //<![CDATA[
+    //Rotating values
     $(document).ready(function() {
-        //$('body.mobile').attr("onload", "javascript: window.close();")
-        //window.close();
+        $(".flip3D").click(function (){
+            //Rotando
+            $(this).find(".front").css("transform", "perspective( 600px ) rotateY( -180deg )"),
+            $(this).find(".back").css("transform", "perspective( 600px ) rotateY( 0deg )");
+
+            setTimeout(function(){
+                $( "#ru" ).slideUp( "fast" ),
+                $( "#win" ).slideDown( "fast" );
+            }, 2000);
+
+            //Load image into result
+            //obtener src de la imagen en .back
+            //Obtener el id de .back
+            var img = $(this).find(".back > img").attr("src");
+            var id = $(this).find(".back").attr("id");
+            var nombre = $(this).find(".back").attr("nombre");
+            $("#win-img > img").attr("src", img);
+            $("#gift_id").val(id);
+            $("#ganaste").append(nombre);
+            console.log(img);
+
+        })
     });
 
     //]]>

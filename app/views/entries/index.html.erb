@@ -17,8 +17,7 @@
     <tr>
       <th>Consumidor</th>
       <th>Evento</th>
-      <th>Recolector</th>
-      <th>Publicación</th>
+      <th>Promotora</th>
       <th>Regalo</th>
       <th>Fecha</th>
       <th colspan="2"></th>
@@ -32,7 +31,6 @@
         <td><%= link_to entry.customer.name, customer_path(entry.customer) %></td>
         <td><%= entry.event.name if !nil? %></td>
         <td><%= entry.collector.name if !nil? %></td>
-        <td><%= "#{entry.post}" %></td>
         <td><%= entry.gift %></td>
         <td><%= entry.created_at.to_date %></td>
         <% if current_user.email == "melvin@cspmconsulting.com" %>

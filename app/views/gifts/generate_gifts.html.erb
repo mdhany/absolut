@@ -8,58 +8,45 @@
 <br/>
     <%= hidden_field_tag :event_id, params[:event_id] %>
   <div class="row">
-      <div class="col-md-6 field">
-        <%= label_tag 'Chivas Flask' %><br>
-        <%= number_field_tag 'gifts[flask]', 0, class: 'form-control' %>
-      </div>
-      <div class="col-md-6 field">
-        <%= label_tag 'Chivas Glasses' %><br>
+      <div class="col-md-3 field">
+        <%= label_tag 'Special guest' %><br>
         <div class="row">
-            <div class="col-md-6"><%= number_field_tag 'gifts[glasses]',0, class: 'form-control' %></div>
-            <div class="col-md-6"><%= number_field_tag 'gifts[glasses1]',0, class: 'form-control' %></div>
+            <div class="col-md-12"><%= number_field_tag 'gifts[guest]',0, class: 'form-control' %></div>
         </div>
       </div>
-      <div class="col-md-6 field">
-        <%= label_tag 'Acceso a Fiestas Fin de Año' %><br>
+      <div class="col-md-3 field">
+        <%= label_tag 'Bolso Playa' %><br>
         <div class="row">
-          <div class="col-md-3"><%= number_field_tag 'gifts[fiesta]',0, class: 'form-control' %></div>
-          <div class="col-md-3"><%= number_field_tag 'gifts[fiesta1]',0, class: 'form-control' %></div>
-          <div class="col-md-3"><%= number_field_tag 'gifts[fiesta2]',0, class: 'form-control' %></div>
-          <div class="col-md-3"><%= number_field_tag 'gifts[fiesta3]',0, class: 'form-control' %></div>
+          <div class="col-md-12"><%= number_field_tag 'gifts[bolso]',0, class: 'form-control' %></div>
         </div>
 
       </div>
       <div class="col-md-6 field">
-        <%= label_tag 'Chivas 50 ml' %><br>
+        <%= label_tag 'T-shirt Absolut' %><br>
         <div class="row">
-          <div class="col-md-6"><%= number_field_tag 'gifts[ml]',0, class: 'form-control' %></div>
-          <div class="col-md-6"><%= number_field_tag 'gifts[ml1]',0, class: 'form-control' %></div>
+          <div class="col-md-4"><%= number_field_tag 'gifts[tshirt]',0, class: 'form-control' %></div>
+          <div class="col-md-4"><%= number_field_tag 'gifts[tshirt1]',0, class: 'form-control' %></div>
+          <div class="col-md-4"><%= number_field_tag 'gifts[tshirt2]',0, class: 'form-control' %></div>
         </div>
 
       </div>
       <div class="col-md-6 field">
-        <%= label_tag 'Chivas Work Kit' %><br>
+        <%= label_tag 'Gorra Absolut' %><br>
         <div class="row">
-          <div class="col-md-4"><%= number_field_tag 'gifts[kit]',0, class: 'form-control' %></div>
-          <div class="col-md-4"><%= number_field_tag 'gifts[kit1]',0, class: 'form-control' %></div>
-          <div class="col-md-4"><%= number_field_tag 'gifts[kit2]',0, class: 'form-control' %></div>
+          <div class="col-md-6"><%= number_field_tag 'gifts[gorra]',0, class: 'form-control' %></div>
+          <div class="col-md-6"><%= number_field_tag 'gifts[gorra1]',0, class: 'form-control' %></div>
         </div>
 
       </div>
       <div class="col-md-6 field">
-        <%= label_tag 'Chivas Catas' %><br>
+        <%= label_tag 'Cocktail Absolut' %><br>
         <div class="row">
-          <div class="col-md-3"><%= number_field_tag 'gifts[catas]',0, class: 'form-control' %></div>
-          <div class="col-md-3"><%= number_field_tag 'gifts[catas1]',0, class: 'form-control' %></div>
-          <div class="col-md-3"><%= number_field_tag 'gifts[catas2]',0, class: 'form-control' %></div>
-          <div class="col-md-3"><%= number_field_tag 'gifts[catas3]',0, class: 'form-control' %></div>
+          <div class="col-md-6"><%= number_field_tag 'gifts[cock]',0, class: 'form-control' %></div>
+          <div class="col-md-6"><%= number_field_tag 'gifts[cock1]',0, class: 'form-control' %></div>
         </div>
 
       </div>
-      <div class="col-md-6 field">
-        <%= label_tag 'Chivas 12 años Tin 750ml' %><br>
-        <%= number_field_tag 'gifts[tin]',0, class: 'form-control' %>
-      </div>
+
   </div>
       <div class="row">
           <div class="col-md-12 field">

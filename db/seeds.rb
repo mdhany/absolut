@@ -8,17 +8,17 @@
 
 
 
-#Collector.create(email: 'melvin@cspmconsulting.com', password: 'cspm2014', password_confirmation: 'cspm2014')
-#User.create(email: 'melvin@cspmconsulting.com', password: 'cspm2014', password_confirmation: 'cspm2014')
+Collector.create(email: 'melvin@cspmconsulting.com', password: 'cspm2014', password_confirmation: 'cspm2014')
+User.create(email: 'melvin@cspmconsulting.com', password: 'cspm2014', password_confirmation: 'cspm2014')
 
 pass = '12345678'
-Collector.create!(name: 'Kim Degoul', email: 'kim@chivasrd.com', password: pass, password_confirmation: pass)
+Collector.create!(name: 'Kim Degoul', email: 'kim2@chivasrd.com', password: pass, password_confirmation: pass)
 Collector.create!(name: 'Stefanie Muñoz', email: 'stefanie@chivasrd.com', password: pass, password_confirmation: pass)
 Collector.create!(name: 'Liliana Valencia', email: 'liliana@chivasrd.com', password: pass, password_confirmation: pass)
 Collector.create!(name: 'Enaldi Perez', email: 'enaldi@chivasrd.com', password: pass, password_confirmation: pass)
 Collector.create!(name: 'Yanilda Beato', email: 'yanilda@chivasrd.com', password: pass, password_confirmation: pass)
 Collector.create!(name: 'Carol Grullon', email: 'carol@chivasrd.com', password: pass, password_confirmation: pass)
-Collector.create!(name: 'Genesis Nouel', email: 'genesis@chivasrd.com', password: pass, password_confirmation: pass)
+Collector.create!(name: 'Recolector Extra', email: 'extra1@chivasrd.com', password: pass, password_confirmation: pass)
 
 User.create!(email: 'jose@chivasrd.com', password: pass, password_confirmation: pass)
 User.create!(email: 'ivan@chivasrd.com', password: pass, password_confirmation: pass)

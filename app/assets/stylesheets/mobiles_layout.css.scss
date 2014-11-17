@@ -1,40 +1,24 @@
 /* Plantilla */
 body.mobile{
-    font-family: verdana, arial, helvetica, sans-serif !important;
-    background-color: #1b1b1b !important;
-    color: #a08c64 !important;
+    font-family: Arial, helvetica, sans-serif !important;
+    background: url(image-path("bg-absolut.jpg")) center top;
+    background-color: #000 !important;
+    color: #fff !important;
 }
 
 body.mobile header{
-    width: 100%; height: 132px;
-    background: url(image-path('bg-header.png')) repeat-x center top #140000;
+    width: 100%; height: 250px;
 }
 body.mobile header .col-md-12{
     text-align: center;
 }
 body.mobile header #logo{
-    padding-top: 40px;
+    padding-top: 60px;
 }
-body.mobile #menu{
-    width: 100%; height: 39px;
-    background-color: #140000;
-}
-body.mobile #menu .bread .blo{
-    width: 25%; display: block;
-    display: inline-block;
-    background: url(image-path("divisor-menu.png")) no-repeat right top;
-    padding-top: 8px;
-    height: 39px;
-    text-transform: uppercase;
-    text-align: center;
-}
-body.mobile #menu .bread .first{ margin-left: 12%;}
-body.mobile #menu .bread .last{ background-image: none;}
 
 body.mobile .contenido{
-  min-height: 580px;
-  background: url(image-path("bg-contenido.jpg")) no-repeat center top;
 }
+
 body.mobile .container{
     max-width: 800px;
 }
@@ -45,7 +29,7 @@ body.mobile footer{
 }
 
 body.mobile .fondo-gris{
-    background: #222222;
+    background: #000;
     padding: 40px;
 }
 body.mobile .center{
@@ -76,14 +60,15 @@ body.mobile h5,
 body.mobile p,
 body.mobile li,
 body.mobile a,
-body.mobile small{color: #a08c64;font-family: verdana, arial, helvetica, sans-serif;}
+body.mobile small{color: #fff;font-family: Arial, helvetica, sans-serif;}
 body.mobile .upper{ text-transform: uppercase; }
 /* Typogtaficos */
 
 /* Forms and links */
 body.mobile .btn{
-    background-color: #222222;
-    color: #a08c64;
+    background-color: #63666a;
+    font-weight: bold;
+    color: #000;
 }
 body.mobile .btn-black{
     background-color: #1b1b1b;
@@ -96,26 +81,75 @@ body.mobile .same{
     width: 226px;
     text-align: center;
 }
+
+/* EDAD */
+body.mobile #edad p{
+  font-size: 16px;
+
+}
+
+body.mobile #club .center-block{
+  width: 600px;
+  margin: 0 auto;
+}
 body.mobile #club label{
     font-weight: normal;
+    font-size: 18px;
 }
 body.mobile #club .field{
     margin-bottom: 20px;
+    font-size: 16px;
 }
 body.mobile #club input[type="submit"]{
-    background-color: #1b1b1b;
-    color: #a08c64;
+    background-color: #63666a;
+    color: #000;
     padding: 20px 80px;
     font-size: 20px;
+    font-weight: bold;
     border: 0;
 }
+
+body.mobile #club .checkes input[type="checkbox"]{
+  display: none;
+}
+body.mobile #club .checkes label {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  padding-left: 25px;
+  margin-right: 15px;
+}
+
+body.mobile #club .checkes label:before {
+  content: "";
+  display: inline-block;
+
+  width: 16px;
+  height: 16px;
+
+  margin-right: 10px;
+  position: absolute;
+  left: 0;
+  bottom: 3px;
+  background-color: #000;
+  border: 1px solid #fff;
+  }
+
+body.mobile #club .checkes input[type=checkbox]:checked + label:before {
+  content: "\2713";
+  font-size: 15px;
+  text-align: center;
+  line-height: 15px;
+  color: #ffffff;
+}
+
 body.mobile .chivas-form{
-    background: none repeat scroll 0 0 #212121;
-    border: 1px solid #443f34;
+    background: none repeat scroll 0 0 #000;
+    border: 2px solid #fff;
     border-radius: 2px;
     color: #fff;
     display: block;
-    font: 16px "Chivas",Verdana,Arial,sans-serif;
+    font: 16px Arial,sans-serif;
     margin: 0 0 20px;
     max-width: 100%;
     outline: medium none;
@@ -126,8 +160,8 @@ body.mobile .chivas-form{
 
 body.mobile #club select{
     -moz-appearance: none;
-    background: #1b1b1b;
-    border: 1px solid #443f34;
+    background: #000;
+    border: 2px solid #fff;
     box-sizing: border-box;
     height: 42px;
     min-width: 140px;
@@ -179,7 +213,6 @@ body.mobile .button-facebook:hover {
   background: -webkit-linear-gradient(top, #2b4170, #3b5998);
 }
 
-
 /* Forms */
 
 /* START */
@@ -210,20 +243,39 @@ body.mobile #list_friend li img{
 body.mobile #list_friend li.active{ border: 2px solid #a08c64;}
 
 /*RULETA*/
-body.mobile .ruleta{
-    width: 628px;
-    height: 625px;
-    position: relative;
-    margin: 20px auto;
-    z-index: 0;
+body.mobile .botones{
+  max-width: 640px;
+  margin: 10px auto;
 }
-body.mobile #botella {
-    -oz-transition: -oz-transform 9s ease-out;
-    -webkit-transition: -webkit-transform 9s ease-out;
-    -moz-transition: -moz-transform 9s ease-out;
-    position: absolute;
-    z-index: 10000;
-    top: 71px;
-    left: 205px;
+.nul-flip{ width:210px; height:220px; display: inline-block; }
+.nul-flip > .nulo{
+  position:absolute;
+  transform: perspective( 600px ) rotateY( 0deg );
+  width:210px; height:220px;
+  border-radius: 7px;
+  backface-visibility:hidden;
+  transition: transform .5s linear 0s;
 }
+.flip3D{ width:210px; height:220px; display: inline-block; }
+.flip3D > .front{
+  position:absolute;
+  transform: perspective( 600px ) rotateY( 0deg );
+  width:210px; height:220px;
+  border-radius: 7px;
+  backface-visibility:hidden;
+  transition: transform .5s linear 0s;
+}
+.flip3D > .back{
+  position:absolute;
+  transform: perspective( 600px ) rotateY( 180deg );
+  width:210px; height:220px;
+  border-radius: 7px;
+  backface-visibility: hidden;
+  transition: transform .5s linear 0s;
+}
+.flip3D:hover{
+  //transform: perspective( 600px ) rotateY( -180deg );
+}
+.left-block{ text-align: left; }
+
 /*RULETA*/

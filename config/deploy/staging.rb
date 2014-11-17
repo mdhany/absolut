@@ -6,9 +6,9 @@
 # Don't declare `role :all`, it's a meta role
 set :stage, :staging
 
-role :app, %w{deploy@dev.chivasrd.com}
-role :web, %w{deploy@dev.chivasrd.com}
-role :db,  %w{deploy@dev.chivasrd.com}
+role :app, %w{deploy@absolutrd.com}
+role :web, %w{deploy@absolutrd.com}
+role :db,  %w{deploy@absolutrd.com}
 
 # Extended Server Syntax
 # ======================
@@ -16,7 +16,7 @@ role :db,  %w{deploy@dev.chivasrd.com}
 # definition into the server list. The second argument
 # something that quacks like a hash can be used to set
 # extended properties on the server.
-server 'dev.chivasrd.com', user: 'deploy', roles: %w{web app}, my_property: :my_value
+server 'absolutrd.com', user: 'deploy', roles: %w{web app}, my_property: :my_value
 set :deploy_to, '/home/deploy/dev'
 
 # you can set custom ssh options
@@ -40,7 +40,7 @@ set :deploy_to, '/home/deploy/dev'
 #     # password: 'please use keys'
 #   }
 # setting per server overrides global ssh_options
-server 'dev.chivasrd.com',
+server 'absolutrd.com',
        user: 'deploy',
        roles: %w{web app},
        ssh_options: {

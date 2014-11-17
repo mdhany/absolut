@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Chivas Nights</title>
+  <title>Absolut</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png">
@@ -15,26 +15,13 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <%= image_tag 'logo-chivasnight.png', id: 'logo'%>
+        <%= link_to root_path do %>
+            <%= image_tag 'logo-abosult.png', id: 'logo'%>
+        <% end %>
       </div>
     </div>
   </div>
 </header>
-
-<div id="menu">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="row bread">
-          <div class="blo first">Reto </div>
-          <div class="blo">Gana</div>
-          <div class="blo last">Club</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
 
 <div class="contenido">
   <div class="container">
@@ -56,17 +43,13 @@
         <p><%= link_to 'Política de Pivacidad', 'http://www.chivas.com/es/do/footer-pages/privacy-policy' %>  |  <%= link_to 'Términos y Condiciones', 'http://www.chivas.com/es/do/footer-pages/terms-and-conditions' %>  |  <%= link_to 'Política de Cookies', 'http://www.chivas.com/es/do/footer-pages/cookie-policy' %></p>
         <br/>
         <small>
-          El consumo de alcohol perjudica la salud. Ley 42-01. Disfruta Chivas Regal responsablemente. <br/>
+          El consumo de alcohol perjudica la salud. Ley 42-01. Disfruta Absolut responsablemente. <br/>
           © Pernod Ricard Dominicana 2014 <br/>
 
         </small>
         <small>
           <%= link_to("Salir", destroy_collector_session_path, method: :delete) %> |
-          <% if current_customer %>
-              <%= link_to 'Reiniciar', "https://www.facebook.com/logout.php?next=#{root_url}&access_token=#{session[:token_fb]}" %>
-          <% else %>
-              <%= link_to 'Reiniciar', root_path %>
-          <% end %>
+          <%= link_to 'Reiniciar', root_path %>
         </small>
       </div>
     </div>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="535315672">
-    <data-source source="LOCAL" name="MySQL - cn_development@localhost" uuid="7465664e-3acb-4ce4-8019-0d1a415688f0">
+  <component name="DataSourceManagerImpl" format="xml" hash="478411748">
+    <data-source source="LOCAL" name="MySQL - absolut_development@localhost [2]" uuid="60266b66-ec16-44d5-9197-40fae6f3fe7f">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/cn_development</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/absolut_development</jdbc-url>
       <user-name>root</user-name>
-      <schema-pattern>cn_development.*</schema-pattern>
-      <default-schemas>cn_development.*</default-schemas>
+      <schema-pattern>absolut_development.*</schema-pattern>
+      <default-schemas>absolut_development.*</default-schemas>
       <driver-properties>
         <property name="zeroDateTimeBehavior" value="convertToNull" />
         <property name="tinyInt1isBit" value="false" />

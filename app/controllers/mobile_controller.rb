@@ -103,23 +103,9 @@ class MobileController < ApplicationController
   end
 
   def spin
-    if current_customer #Si participo y acepto el reto
-      g = Gift.where(["event_id = ? and inventory > ? and type_g IN (0,1,2,3,4,5)", current_collector.event_id, 0]).order('RAND()').sample
+    @gifts = Gift.where(["event_id = ?", current_collector.event_id]).order('RAND()')
 
-      #Si el regalo sorteado, es TIN (5), y las entradas son menor a la condicion...
-      if g.type_g == 5 && current_collector.event.entries.completed.size < g.priority
-        #sortear nuevamente entre cualesquiera QUE NO sea TIN
-        g = Gift.where(["event_id = ? and inventory > ? and type_g IN (0,1,2,3,4)", current_collector.event_id, 0]).order('RAND()').sample
-      else #Si cumple con las condiciones para TIN / Si es cualquier otro. Then Desplegar
-        g
-      end
-      logger.debug "Este Customer ACEPTO RETO."
-    else #Si no aceptó el reto
-      g = Gift.where(["event_id = ? and inventory > ? and priority IN (1,2)", current_collector.event_id, 0]).order('RAND()').sample #current_collector.event_id
-      logger.debug "Este Customer NO ACEPTO RETO"
-    end
-
-    @win = g
+    #@win = g
   end
 
   def save_gift

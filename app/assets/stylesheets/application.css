@@ -48,14 +48,14 @@
 .pagar{ margin-top: -200px;}
 
 .gold{
-    background-color:  #8a7d51;
+    background-color:  #00287e;
     -moz-border-bottom-colors: none;
     -moz-border-left-colors: none;
     -moz-border-right-colors: none;
     -moz-border-top-colors: none;
-    border-color: -moz-use-text-color #8a7d51 #8a7d51;
+    border-color: -moz-use-text-color #00287e #00287e;
     border-image: none;
-    border: 1px solid #8a7d51;
+    border: 1px solid #00287e;
     border-style: none solid solid;
     border-width: 0 1px 1px;
 }

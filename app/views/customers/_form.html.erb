@@ -33,19 +33,20 @@
   </div>
   <div class="field">
     <%= f.label 'Algunos de sus intereses:' %><br>
-    <input type="checkbox" value="Eventos Gastronómicos"> Eventos Gastronómicos<br>
-    <input type="checkbox" value="Eventos Sociales"> Eventos Sociales<br>
-    <input type="checkbox" value="Fiestas o Conciertos"> Fiestas o Conciertos <br/>
-    <input type="checkbox" value="Catas"> Catas<br/>
-    <input type="checkbox" value="Torneos"> Torneos<br/>
-    <input type="checkbox" value="Club de Descuentos o Regalos"> Club de Descuentos o Regalos<br/> <br/>
-
+    <div class="checkes">
+        <input type="checkbox" value="Eventos Gastronómicos" id="i1"> <label for="i1">Eventos Gastronómicos</label><br>
+        <input type="checkbox" value="Eventos Sociales" id="i2"><label for="i2">Eventos Sociales</label><br>
+        <input type="checkbox" value="Fiestas o Conciertos" id="i3"><label for="i3">Fiestas o Conciertos</label> <br/>
+        <input type="checkbox" value="Catas" id="i4"> <label for="i4">Catas</label><br/>
+        <input type="checkbox" value="Torneos" id="i5"> <label for="i5">Torneos</label><br/>
+        <input type="checkbox" value="Club de Descuentos o Regalos" id="i6"> <label for="i6">Club de Descuentos o Regalos</label><br/> <br/>
+    </div>
     <%= f.text_field :interest, class: 'chivas-form' %>
 
 
   </div>
   <div class="actions">
-    <%= f.submit {[class: 'btn btn-lg btn-black']} %>
+    <%= f.submit {[class: 'btn btn-lg']} %>
   </div>
 <% end %>
 

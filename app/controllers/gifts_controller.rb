@@ -69,33 +69,22 @@ class GiftsController < ApplicationController
   def creating_gifts
     g = Event.find params[:event_id]
     if g.gifts.blank?
-      #Chivas Flask
-      Gift.create!([type_g: 0, name: 'Chivas Flask', position: 10, event_id: params[:event_id], inventory: params[:gifts][:flask], predicted: params[:gifts][:flask], priority: 1, image: 'g-flask.jpg'])
+      #Special guest
+      Gift.create!([type_g: 0, name: 'Special guest', event_id: params[:event_id], inventory: params[:gifts][:guest], predicted: params[:gifts][:guest], image: 'cb-invitation.png'])
 
-      #Glasses
-      Gift.create!([type_g: 0, name: 'Chivas Glasses', position: 140, event_id: params[:event_id], inventory: params[:gifts][:glasses], predicted: params[:gifts][:glasses], priority: 1, image: 'g-glasses.jpg'])
-      Gift.create!([type_g: 0, name: 'Chivas Glasses', position: 205, event_id: params[:event_id], inventory: params[:gifts][:glasses1], predicted: params[:gifts][:glasses1], priority: 1, image: 'g-glasses.jpg'])
+      #Bolso Playa
+      Gift.create!([type_g: 0, name: 'Bolso Playa', event_id: params[:event_id], inventory: params[:gifts][:bolso], predicted: params[:gifts][:bolso], image: 'cb-bolso.png'])
 
-      #Acceso a Fiestas Fin de Año
-      Gift.create!([type_g: 1, name: 'Acceso a Fiestas Fin de Año', position: 30, event_id: params[:event_id], inventory: params[:gifts][:fiesta], predicted:  params[:gifts][:fiesta], priority: 1, image: 'g-fiestas.jpg'])
-      Gift.create!([type_g: 1, name: 'Acceso a Fiestas Fin de Año', position: 105, event_id: params[:event_id], inventory: params[:gifts][:fiesta1], predicted:  params[:gifts][:fiesta1], priority: 1, image: 'g-fiestas.jpg'])
-      Gift.create!([type_g: 1, name: 'Acceso a Fiestas Fin de Año', position: 185, event_id: params[:event_id], inventory: params[:gifts][:fiesta2], predicted:  params[:gifts][:fiesta2], priority: 1, image: 'g-fiestas.jpg'])
-      Gift.create!([type_g: 1, name: 'Acceso a Fiestas Fin de Año', position: 320, event_id: params[:event_id], inventory: params[:gifts][:fiesta3], predicted:  params[:gifts][:fiesta3], priority: 1, image: 'g-fiestas.jpg'])
+      #Tshirt
+      Gift.create!([type_g: 0, name: 'T-shirt Absolut', event_id: params[:event_id], inventory: params[:gifts][:tshirt], predicted: params[:gifts][:tshirt], image: 'cb-tshirt.png'])
+      Gift.create!([type_g: 0, name: 'T-shirt Absolut', event_id: params[:event_id], inventory: params[:gifts][:tshirt1], predicted: params[:gifts][:tshirt1], image: 'cb-tshirt.png'])
+      Gift.create!([type_g: 0, name: 'T-shirt Absolut', event_id: params[:event_id], inventory: params[:gifts][:tshirt2], predicted: params[:gifts][:tshirt2], image: 'cb-tshirt.png'])
 
-      #Chivas 375 ml
-      Gift.create!([type_g: 2, name: 'Chivas 50 ml', position: 55, event_id: params[:event_id], inventory: params[:gifts][:ml], predicted: params[:gifts][:ml], priority: 1, image: 'g-ml.jpg'])
-      Gift.create!([type_g: 2, name: 'Chivas 50 ml', position: 250, event_id: params[:event_id], inventory: params[:gifts][:ml1], predicted: params[:gifts][:ml1], priority: 1, image: 'g-ml.jpg'])
+      Gift.create!([type_g: 0, name: 'Gorra Absolut', event_id: params[:event_id], inventory: params[:gifts][:gorra], predicted: params[:gifts][:gorra], image: 'cb-gorra.png'])
+      Gift.create!([type_g: 0, name: 'Gorra Absolut', event_id: params[:event_id], inventory: params[:gifts][:gorra1], predicted: params[:gifts][:gorra1], image: 'cb-gorra.png'])
 
-      #Chivas Work Kit
-        Gift.create!([type_g: 3, name: 'Chivas Work Kit', position: 85, event_id: params[:event_id], inventory: params[:gifts][:kit], predicted: params[:gifts][:kit], priority: 1, image: 'g-kit.jpg'])
-        Gift.create!([type_g: 3, name: 'Chivas Work Kit', position: 160, event_id: params[:event_id], inventory: params[:gifts][:kit1], predicted: params[:gifts][:kit1], priority: 1, image: 'g-kit.jpg'])
-        Gift.create!([type_g: 3, name: 'Chivas Work Kit', position: 275, event_id: params[:event_id], inventory: params[:gifts][:kit2], predicted: params[:gifts][:kit2], priority: 1, image: 'g-kit.jpg'])
-      #Chivas Catas
-        Gift.create!([type_g: 4, name: 'Chivas Catas', position: 340, event_id: params[:event_id], inventory: params[:gifts][:catas], predicted: params[:gifts][:catas], priority: 1, image: 'g-catas.jpg'])
-        Gift.create!([type_g: 4, name: 'Chivas Catas', position: 120, event_id: params[:event_id], inventory: params[:gifts][:catas1], predicted: params[:gifts][:catas1], priority: 1, image: 'g-catas.jpg'])
-        Gift.create!([type_g: 4, name: 'Chivas Catas', position: 225, event_id: params[:event_id], inventory: params[:gifts][:catas2], predicted: params[:gifts][:catas2], priority: 1, image: 'g-catas.jpg'])
-      #Chivas 12 años Tin 750ml
-        Gift.create!([type_g: 5, name: 'Chivas 12 años Tin 750ml', position: 300, event_id: params[:event_id], inventory: params[:gifts][:tin], predicted: params[:gifts][:tin], priority: 1, image: 'g-tin.jpg'])
+      Gift.create!([type_g: 0, name: 'Cocktail Absolut', event_id: params[:event_id], inventory: params[:gifts][:cock], predicted: params[:gifts][:cock], image: 'cb-copa.png'])
+      Gift.create!([type_g: 0, name: 'Cocktail Absolut', event_id: params[:event_id], inventory: params[:gifts][:cock1], predicted: params[:gifts][:cock1], image: 'cb-copa.png'])
 
       redirect_to event_path(params[:event_id]), notice: "Todos los regalos fueron creados"
     else
