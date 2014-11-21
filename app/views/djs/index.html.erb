@@ -1,0 +1,48 @@
+<h1>Djs</h1>
+<%= link_to 'Crear DJ', new_dj_path, class: 'btn btn-lg gold' %>
+<br/>
+<br/>
+<div class="portlet box gold">
+  <div class="portlet-title">
+    <div class="caption">Datos</div>
+    <div class="tools">
+      <a class="collapse" href="javascript:;"></a>
+      <a class="config" data-toggle="modal" href="#portlet-config"></a>
+      <a class="reload" href="javascript:;"></a>
+      <a class="remove" href="javascript:;"></a>
+    </div>
+  </div>
+  <div class="portlet-body">
+    <div class="table-responsive">
+      <table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Imagen</th>
+      <th>Votos</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @djs.each do |dj| %>
+      <tr>
+        <td><%= dj.name %></td>
+        <td>
+          <% if dj.image.nil? %>
+            Sin Foto
+          <% else %>
+            <%= image_tag "/uploads/#{dj.image}", width: 100 %>
+          <% end %>
+        </td>
+        <td><h2><b><%= number_with_delimiter(dj.votes.count) %></b></h2></td>
+
+        <td><%= link_to 'Editar', edit_dj_path(dj) %> | <%= link_to 'Eliminar', dj, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+    </div>
+  </div>
+</div>
+

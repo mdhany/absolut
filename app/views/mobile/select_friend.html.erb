@@ -61,66 +61,11 @@
 </div>
 
 <% end %>
-<script type="text/javascript" charset="utf-8">
-    //<![CDATA[
 
-    //Search for Listing Friend
-    var options = {
-        valueNames: [ 'nombre' ]
-    };
-
-    var hackerList = new List('hacker-list', options);
-
-    //]]>
-</script>
 
 <script type="text/javascript" charset="utf-8">
     //<![CDATA[
-    //Working with friends
-    //Id numericos
-    //Cuando hagan clic en un li,
-    //Obtener su id y crear el hidden con ese id y obteneiendo el valor del attr fb
-    $('#list_friend').on("click", "li", function() {
-        id = $(this).attr("id");
-        fb = $(this).attr("fb");
 
-        if ($(this).hasClass('active')){
-            $('input#friends[id]').remove();
-            $(this).removeClass('active');
-        } else  {
-            //Add input hidden for form
-            $('<input>').attr({
-                type: 'hidden',
-                id: 'friends['+id+']',
-                name: 'friends['+id+']',
-                value: fb
-            }).appendTo('#tag');
-            //Agregar clase activo al listado clikeado
-            $(this).addClass('active');
-            //Agregar Nombres a preview
-            $('<span>, '+ $(this).text()+'</span>').appendTo('#mensaje-fb');
-        }
-    });
-
-    //Wizard
-    $('#b-foto').click(function() {
-        var im = $('#picture').val();
-        if (im == ''){
-            alert('Debe tomar una foto antes de continuar. ');
-        } else {
-            $( "#foto" ).slideUp( "fast" ),
-            $( "#tag" ).slideDown( "fast" );
-        }
-    });
-
-    $('#b-tag').click(function() {
-        if ($('#list_friend li').hasClass('active')) {
-            $("#tag").slideUp("fast"),
-            $("#post").slideDown("fast");
-        }else{
-            alert('Debe Tagear a uno de sus amigos para continuar ');
-        }
-    });
 
 
     //Preview Image
@@ -140,65 +85,6 @@
         readURL(this);
     });
 
-
-    $(document).ready(function() {
-        $.ajaxSetup({ cache: true });
-        $.getScript('//connect.facebook.net/en_UK/all.js', function () {
-            FB.init({
-                appId: '<%= Facebook::APP_ID.to_s %>',
-                cookie: true,
-                xfbml: true,
-                version: 'v2.1'
-            });
-
-            //FB.getLoginStatus(function (response) {
-             //   if (response.status === 'connected') {
-               //     console.log('The login is connected');
-                 //   console.log(response);
-                    //hide button for login in publish
-                   // $('#perm-fb').hide('fast'),
-                        //Show Submit buttom
-                    //$('#share-fb').show('fast');
-
-//                }
-  //          });
-        });
-
-        //Asking Permision again
-        $('#perm-fb').click(function() {
-            permisions();
-
-
-        });
-
-
-        function permisions() {
-            FB.login(function (response) {
-                if (response.status === 'connected') {
-                    // Logged into your app and Facebook.
-                    console.log('Autorizando para publicar');
-                    console.log(response);
-                    if (response.authResponse.grantedScopes === 'public_profile,basic_info,email,contact_email,publish_actions,user_photos,user_friends') {
-                        console.log('Los permisos aceptados ' + response.authResponse.grantedScopes);
-                        //Hide Buttom
-                        $('#perm-fb').hide('fast'),
-                        //Show Submit buttom
-                        $('#share-fb').show('fast');
-                    } else {
-                        alert('Debes aceptar todos los permisos solicitados. Click en el botón azúl otra vez.');
-                    }
-
-                } else {
-                    // The person is not logged into Facebook, so we're not sure if
-                    // they are logged into this app or not.
-                    console.log('Permisions not got it for Facebook or APP. Redirecting to Login');
-                    window.location.href = '<%= login_facebook_url %>'
-                }
-            }, {scope: 'publish_actions, user_photos', auth_type: 'rerequest', return_scopes: true});
-        }
-
-
-    });
 
     //]]>
     </script>

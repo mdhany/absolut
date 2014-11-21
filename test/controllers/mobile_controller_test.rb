@@ -7,7 +7,7 @@ class MobileControllerTest < ActionController::TestCase
   end
 
   test "should get social" do
-    get :social
+    get :djs
     assert_response :success
   end
 

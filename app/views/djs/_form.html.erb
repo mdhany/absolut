@@ -1,0 +1,25 @@
+<%= form_for(@dj) do |f| %>
+  <% if @dj.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dj.errors.count, "error") %> prohibited this dj from being saved:</h2>
+
+      <ul>
+      <% @dj.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label 'Nombre' %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label 'Imagen' %><br>
+    <%= f.file_field :image, accept: "image/*" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

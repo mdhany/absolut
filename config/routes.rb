@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
 
+  resources :djs
+  resources :votes
+
   get 'collectors/event', to: 'collectors#event', as: 'events_collector'
   post 'collectors/event/edit', to: 'collectors#edit_collector_event', as: 'edit_collector_event'
 
 
   get 'start', to: 'mobile#start', as: 'start'
 
-  get 'login-facebook', to: 'mobile#social', as: 'login_facebook'
-  get 'posting', to: 'mobile#creating_post', as: 'posting'
+  get 'choose_dj', to: 'mobile#djs', as: 'djs_mobile'
+  post 'create_vote', to: 'mobile#create_vote', as: 'create_vote'
 
   get 'ruleta', to: 'mobile#spin', as: 'ruleta'
 

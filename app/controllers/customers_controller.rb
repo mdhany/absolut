@@ -29,15 +29,17 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to end_path, notice: 'Sus datos fueron registrados exitosamente.' }
-        format.json { render :show, status: :created, location: @customer }
         en = @customer.create_entry!(event_id: current_collector.event_id, gift: session[:gift], completed: true, collector_id: current_collector.id)
         if en
           logger.debug "Entrada #{session[:customer_id]} creada"
           @customer.update_attribute :entry_id, en.id
         end
+        session[:customer_id] = @customer.id
+        format.html { redirect_to djs_mobile_path, notice: 'Sus datos fueron registrados exitosamente.' }
+        format.json { render :show, status: :created, location: @customer }
+
       else
-        format.html { redirect_to end_path, alert: 'Este email ya esta registrado.' }
+        format.html { redirect_to djs_mobile_path, alert: 'Este email ya esta registrado.' }
         format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
@@ -48,7 +50,7 @@ class CustomersController < ApplicationController
   def update
     respond_to do |format|
       if @customer.update(customer_params)
-        format.html { redirect_to end_path}
+        format.html { redirect_to djs_mobile_path}
         format.json { render :show, status: :ok, location: @customer }
 
         if @customer.entry.update_attribute :completed, true
