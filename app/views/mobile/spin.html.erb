@@ -43,13 +43,15 @@
     $(document).ready(function() {
         $(".flip3D").click(function (){
             //Rotando
-            $(this).find(".front").css("transform", "perspective( 600px ) rotateY( -180deg )"),
-            $(this).find(".back").css("transform", "perspective( 600px ) rotateY( 0deg )");
+            $(this).find(".front").css({
+                "-webkit-transform":"perspective( 600px ) rotateY( -180deg )",
+                "transform":"perspective( 600px ) rotateY( -180deg )"}),
+            $(this).find(".back").css({"-webkit-transform": "perspective( 600px ) rotateY( 0deg )", "transform": "perspective( 600px ) rotateY( 0deg )"});
 
             setTimeout(function(){
                 $( "#ru" ).slideUp( "fast" ),
                 $( "#win" ).slideDown( "fast" );
-            }, 2000);
+            }, 1000);
 
             //Load image into result
             //obtener src de la imagen en .back

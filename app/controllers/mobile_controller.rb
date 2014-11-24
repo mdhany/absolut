@@ -14,9 +14,9 @@ class MobileController < ApplicationController
   end
 
   def create_vote
-    @vote = Vote.new(dj_id: params[:dj_id], customer_id: params[:customer_id])
+    @vote = Vote.new(dj_id: params[:dj_id])
     if @vote.save
-      redirect_to end_path
+      redirect_to club_path
       logger.debug "El voto de DJ fue creado"
     end
   end
@@ -45,6 +45,7 @@ class MobileController < ApplicationController
     gift = Gift.find params[:gift_id]
 
       #Restar el regalo ganado
+    if gift.inventory > 0
       if gift.update_attribute :inventory, gift.inventory - 1
         if current_customer
           current_customer.entry.update_attributes!(gift: gift.name, completed: true)
@@ -52,10 +53,14 @@ class MobileController < ApplicationController
         else
           session[:gift] = gift.name
         end
-        redirect_to club_path
+        redirect_to djs_mobile_path
       else
         logger.debug "No pudo ser guargado el gift"
       end
+    else
+      redirect_to ruleta_path, alert: 'Lo sentimos, Ya este regalo estaba reservado. ¡vuelve a intentar!'
+      logger.debug "ERROR: REGALO NO GUARDADO. Ya este regalo estaba reservado"
+    end
 
   end
 

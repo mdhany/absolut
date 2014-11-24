@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label 'Fecha de Nacimiento' %><span class="red">*</span><br>
-    <%= f.date_select :birth, start_year: 1940, end_year: 1999, class: 'chivas-form' %>
+    <%= f.date_select :birth, include_blank: true, start_year: 1940, end_year: 1999,  class: 'chivas-form' %>
   </div>
   <div class="field">
     <%= f.label 'Ciudad' %><br>
