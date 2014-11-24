@@ -17,7 +17,7 @@ role :db,  %w{deploy@absolutrd.com}
 # something that quacks like a hash can be used to set
 # extended properties on the server.
 server 'absolutrd.com', user: 'deploy', roles: %w{web app}, my_property: :my_value
-set :deploy_to, '/home/deploy/dev'
+set :deploy_to, '/home/deploy/abdev'
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options
