@@ -1,11 +1,11 @@
 <div id="ru">
-<h1 class="mbottom text-hide"><%= image_tag 'tl-presiona.png' %>¡Presiona y Gana!</h1>
+<h1 class="mbottom text-hide"><%= image_tag 'tl-presiona.png', class: 'img-responsive img-center' %>¡Presiona y Gana!</h1>
   <div class="botones">
     <% @gifts.each_with_index do |g, i| %>
         <% if g.inventory > 0 %>
             <div class="flip3D">
-                <div class="back" id="<%= g.id %>" nombre="<%= g.name %>"><%= image_tag g.image %></div>
-                <div class="front"><%= image_tag "c-#{i+1}.png" %></div>
+                <div class="back" id="<%= g.id %>" nombre="<%= g.name %>"><%= image_tag g.image, class: 'img-responsive img-center' %></div>
+                <div class="front"><%= image_tag "c-#{i+1}.png", class: 'img-responsive img-center' %></div>
             </div>
         <% else %>
             <div class="nul-flip">
@@ -42,11 +42,16 @@
     //Rotating values
     $(document).ready(function() {
         $(".flip3D").click(function (){
+            //Disabling click in others divs
+            $(".flip3D").off('click');
             //Rotando
             $(this).find(".front").css({
                 "-webkit-transform":"perspective( 600px ) rotateY( -180deg )",
                 "transform":"perspective( 600px ) rotateY( -180deg )"}),
-            $(this).find(".back").css({"-webkit-transform": "perspective( 600px ) rotateY( 0deg )", "transform": "perspective( 600px ) rotateY( 0deg )"});
+            $(this).find(".back").css({
+                "-webkit-transform": "perspective( 600px ) rotateY( 0deg )",
+                "transform": "perspective( 600px ) rotateY( 0deg )"}
+            );
 
             setTimeout(function(){
                 $( "#ru" ).slideUp( "fast" ),
@@ -63,8 +68,8 @@
             $("#gift_id").val(id);
             $("#ganaste").append(nombre);
             console.log(img);
-
         })
+
     });
 
     //]]>
