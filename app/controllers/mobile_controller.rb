@@ -1,6 +1,6 @@
 class MobileController < ApplicationController
   before_action :authenticate_collector!
-  before_action :have_gifts_in_stock?, except: [:club, :end]
+  before_action :have_gifts_in_stock?, except: [:club, :end, :djs, :create_vote]
   #before_filter :api_graph, only: [:select_friend, :publishing_post]
 
   def start
