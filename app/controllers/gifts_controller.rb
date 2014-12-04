@@ -83,8 +83,8 @@ class GiftsController < ApplicationController
       Gift.create!([type_g: 0, name: 'Gorra Absolut', event_id: params[:event_id], inventory: params[:gifts][:gorra], predicted: params[:gifts][:gorra], image: 'cb-gorra.png'])
       Gift.create!([type_g: 0, name: 'Gorra Absolut', event_id: params[:event_id], inventory: params[:gifts][:gorra1], predicted: params[:gifts][:gorra1], image: 'cb-gorra.png'])
 
-      Gift.create!([type_g: 0, name: 'Cocktail Absolut', event_id: params[:event_id], inventory: params[:gifts][:cock], predicted: params[:gifts][:cock], image: 'cb-copa.png'])
-      Gift.create!([type_g: 0, name: 'Cocktail Absolut', event_id: params[:event_id], inventory: params[:gifts][:cock1], predicted: params[:gifts][:cock1], image: 'cb-copa.png'])
+      Gift.create!([type_g: 0, name: 'Absolut Breeze Shots', event_id: params[:event_id], inventory: params[:gifts][:cock], predicted: params[:gifts][:cock], image: 'cb-shot.png'])
+      Gift.create!([type_g: 0, name: 'Absolut Breeze Cocktail', event_id: params[:event_id], inventory: params[:gifts][:cock1], predicted: params[:gifts][:cock1], image: 'cb-copa.png'])
 
       redirect_to event_path(params[:event_id]), notice: "Todos los regalos fueron creados"
     else
