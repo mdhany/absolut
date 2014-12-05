@@ -1,5 +1,5 @@
 class Customer < ActiveRecord::Base
-  has_one :entry
+  has_one :entry, dependent: :destroy
 
   validates :email, presence: true, uniqueness: true
   validate :birth, presence: true
