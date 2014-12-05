@@ -7,7 +7,7 @@
     <div class="col-xs-4">
       <%= form_tag create_vote_path  do %>
           <%= hidden_field_tag :dj_id, d.id %>
-          <%= image_submit_tag "#{d.image}", class: 'img-responsive' %>
+          <%= image_submit_tag "#{d.image}", class: 'img-responsive send' %>
       <% end %>
 
     </div>
@@ -20,5 +20,9 @@
 
 
 
+<%= javascript_tag do %>
 
-
+$(".send").click(function (){
+    $(this).attr("disabled", "disabled");
+})
+<% end %>

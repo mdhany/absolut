@@ -32,7 +32,7 @@
           <% if dj.image.nil? %>
             Sin Foto
           <% else %>
-            <%= image_tag "/uploads/#{dj.image}", width: 100 %>
+            <%= image_tag "#{dj.image}", width: 100 %>
           <% end %>
         </td>
         <td><h2><b><%= number_with_delimiter(dj.votes.count) %></b></h2></td>

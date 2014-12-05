@@ -31,14 +31,12 @@
     <% if !@gift.priority.blank? %>
         <p><b>Actual:</b> <%= @gift.priority %></p>
     <% end %>
-    <small>1/x = Regalos de alto costo (1 Cada x cantidad)</small>
-    <br/>
     <small>1 = Regulares</small>
     <br/>
     <small>2 = Regalos de salida alta</small>
     <br/>
     <br/>
-    <%= f.select :priority, options_for_select([1, 2, 3, ["1/6 (6)", 6], ["1/8 (8)", 8], ["1/10 (10)", 10], ["1/15 (15)", 15]]), {}, class: 'form-control' %>
+    <%= f.select :priority, options_for_select([1, 2]), {}, class: 'form-control' %>
 
   </div>
     <br/>
