@@ -15,6 +15,7 @@
       <table class="table table-hover">
   <thead>
     <tr>
+      <th>#</th>
       <th>Consumidor</th>
       <th>Evento</th>
       <th>Promotora</th>
@@ -26,9 +27,14 @@
   </thead>
 
   <tbody>
-    <% @entries.each do |entry| %>
+    <% @entries.each_with_index do |entry, i| %>
       <tr>
-        <td><%= link_to entry.customer.name, customer_path(entry.customer) %></td>
+        <td><%= i+1 %></td>
+        <% if entry.customer.nil? %>
+            <td class="gris">SIN DATA</td>
+        <% else %>
+            <td><%= link_to entry.customer.name, customer_path(entry.customer) %></td>
+        <% end %>
         <td><%= entry.event.name if !nil? %></td>
         <td><%= entry.collector.name if !nil? %></td>
         <td><%= entry.gift %></td>

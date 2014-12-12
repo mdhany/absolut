@@ -29,7 +29,7 @@
         <h1 class="mbottom" id="ganaste">Has ganado <br/></h1>
             <%= form_tag({action: :save_gift}) do %>
                 <%= hidden_field_tag :gift_id, "" %>
-                <%= submit_tag 'Continuar', class: 'e-no btn btn-lg' %>
+                <%= submit_tag 'Continuar', data: { disable_with: "Por favor espera..." }, class: 'e-no btn btn-lg' %>
         <% end %>
         </div>
     </div>

@@ -15,6 +15,7 @@
       <table class="table table-hover">
   <thead>
     <tr>
+      <th>#</th>
       <th>Consumidor</th>
       <th>Nacimiento</th>
       <th>Ciudad</th>
@@ -26,8 +27,9 @@
   </thead>
 
   <tbody>
-    <% @customers.each do |customer| %>
+    <% @customers.each_with_index do |customer, i| %>
       <tr>
+        <td><%= i+1 %></td>
         <td><%= customer.name %></td>
         <td><%= customer.birth %></td>
         <td><%= customer.city %></td>

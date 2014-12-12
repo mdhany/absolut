@@ -4,8 +4,6 @@ class MobileController < ApplicationController
   #before_filter :api_graph, only: [:select_friend, :publishing_post]
 
   def start
-    #desconectar de fb
-    #Limpiar las sesiones
     destroy_session_customer
   end
 
@@ -37,43 +35,45 @@ class MobileController < ApplicationController
 
   def spin
     @gifts = Gift.where(["event_id = ?", current_collector.event_id]).order('RAND()')
-
-    #@win = g
   end
 
   def save_gift
     gift = Gift.find params[:gift_id]
 
-      #Restar el regalo ganado
-    if gift.inventory > 0
-      if gift.update_attribute :inventory, gift.inventory - 1
-        if current_customer
-          current_customer.entry.update_attributes!(gift: gift.name, completed: true)
-          logger.debug "Entrada Actualizada"
-        else
-          session[:gift] = gift.name
-        end
-        redirect_to djs_mobile_path
-      else
-        logger.debug "No pudo ser guargado el gift"
-      end
+    if gift.nil?
+      redirect_to ruleta_path, alert: 'Lo sentimos, vuelva a seleccionar su regalo...'
     else
-      redirect_to ruleta_path, alert: 'Lo sentimos, Ya este regalo estaba reservado. ¡vuelve a intentar!'
-      logger.debug "ERROR: REGALO NO GUARDADO. Ya este regalo estaba reservado"
+      #Restar el regalo ganado
+      if gift.inventory > 0
+        if gift.update_attribute :inventory, gift.inventory - 1
+          if session[:gift] = gift.name
+            redirect_to djs_mobile_path
+          end
+        else
+          logger.debug "No pudo ser guargado el gift"
+        end
+      else
+        redirect_to ruleta_path, alert: 'Lo sentimos, Ya este regalo estaba reservado. ¡vuelve a intentar!'
+        logger.debug "ERROR: REGALO NO GUARDADO. Ya este regalo estaba reservado"
+      end
     end
 
   end
 
   def club
-    if current_customer
-      @customer = Customer.find(current_customer)
-    else
-      @customer = Customer.new
+    @customer = Customer.new
+  end
+
+  def no_customer
+    if request.post?
+      if Entry.create!(event_id: current_collector.event_id, gift: session[:gift], completed: true, collector_id: current_collector.id)
+        redirect_to end_path
+      end
     end
   end
 
   def end
-
+    destroy_session_customer
   end
 
   protected
@@ -83,9 +83,5 @@ class MobileController < ApplicationController
     else
       render "mobile/no_gifts"
     end
-  end
-
-  def api_graph
-  @graph = Koala::Facebook::GraphAPI.new(session[:token_fb])
   end
 end
