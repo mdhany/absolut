@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   post 'events/creating_gifts', to: 'gifts#creating_gifts', as: 'creating_gifts'
 
   get 'club', to: 'mobile#club', as: 'club'
+  post 'no_customer_filled', to: 'mobile#no_customer_filled', as: 'no_customer_filled'
   get 'end', to: 'mobile#end', as: 'end'
 
   post 'select_activity', to: 'mobile#select_activity', as: 'select_activity'

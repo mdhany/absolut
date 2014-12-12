@@ -64,7 +64,7 @@ class MobileController < ApplicationController
     @customer = Customer.new
   end
 
-  def no_customer
+  def no_customer_filled
     if request.post?
       if Entry.create!(event_id: current_collector.event_id, gift: session[:gift], completed: true, collector_id: current_collector.id)
         redirect_to end_path

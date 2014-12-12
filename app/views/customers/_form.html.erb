@@ -49,7 +49,7 @@
     <%= f.submit {[class: 'btn btn-lg']}%>
   </div>
     <br/>
-    <%= link_to "Consumidor sin data", no_customer_path, class: 'gris', method: :post %>
+    <%= link_to "Consumidor sin data", {controller: 'mobile', action: 'no_customer_filled'}, class: 'gris', method: :post %>
 <% end %>
 
 <%= javascript_tag do -%>
