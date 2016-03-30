@@ -17,7 +17,7 @@ role :db,  %w{deploy@159.203.162.242}
 # definition into the server list. The second argument
 # something that quacks like a hash can be used to set
 # extended properties on the server.
-server 'absolutrd.com', user: 'deploy', roles: %w{web app}
+server '159.203.162.242', user: 'deploy', roles: %w{web app}, my_property: :my_value
 set :deploy_to, '/home/deploy/absolut'
 
 # you can set custom ssh options
