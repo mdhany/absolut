@@ -41,7 +41,7 @@ set :deploy_to, '/home/deploy/absolut'
 #     # password: 'please use keys'
 #   }
 # setting per server overrides global ssh_options
-server 'absolutrd.com',
+server '159.203.162.242',
        user: 'deploy',
        roles: %w{web app},
        ssh_options: {

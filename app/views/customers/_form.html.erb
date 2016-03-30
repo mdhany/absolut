@@ -17,7 +17,8 @@
   </div>
   <div class="field">
     <%= f.label 'Fecha de Nacimiento' %><span class="red">*</span><br>
-    <%= f.date_select :birth, include_blank: true, start_year: 1940, end_year: 1999,  class: 'chivas-form' %>
+    <%#= f.date_select :birth, include_blank: true, start_year: 1940, end_year: 1999,  class: 'chivas-form' %>
+    <%= f.date_select :birth,  prompt: { day: 'Día', month: 'Mes', year: 'Año' }, start_year: 1940, end_year: 1999,  class: 'chivas-form' %>
   </div>
   <div class="field">
     <%= f.label 'Ciudad' %><br>
@@ -64,6 +65,45 @@
     });
     });
 
+
+<% end -%>
+
+<%= javascript_tag do -%>
+
+$(document).ready(function () {
+// add required to date
+$( "#customer_birth_3i" ).attr( "required", "required" );
+$( "#customer_birth_2i" ).attr( "required", "required" );
+$( "#customer_birth_1i" ).attr( "required", "required" );
+
+    $("#new_customer").validate({
+        rules: {
+            'customer[name]': "required",
+            'customer[birth(3i)]': {
+                required: true
+            },
+            'customer[birth(2i)]': {
+                required: true
+            },
+            'customer[birth(1i)]': {
+                required: true
+            },
+            'customer[email]': {
+                required: true,
+                email: true
+            }
+        },
+        messages: {
+            'customer[name]': "Este campo es requerido",
+            'customer[birth(3i)]': "Seleccione una opción",
+            'customer[birth(2i)]': "Seleccione una opción",
+            'customer[birth(1i)]': "Seleccione una opción",
+            'customer[email]': "Digite un email válido"
+        }
+    })
+})
+
+$ = jQuery.noConflict();
 
 <% end -%>
 

@@ -21,6 +21,7 @@
 //= require jquery.blockui.min
 //= require jquery.cookie.min
 //= require uniform/jquery.uniform.min
+//= require jquery.validate.min
 //= require admin/app
 //= require list
 //= require_self
