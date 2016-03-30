@@ -69,23 +69,24 @@ class GiftsController < ApplicationController
   def creating_gifts
     g = Event.find params[:event_id]
     if g.gifts.blank?
-      #Special guest
-      Gift.create!([type_g: 0, name: 'Special guest', event_id: params[:event_id], inventory: params[:gifts][:guest], predicted: params[:gifts][:guest], image: 'cb-invitation.png'])
+      #Speaker
+      Gift.create!([type_g: 0, name: 'Bluetooth Speaker Absolut', event_id: params[:event_id], inventory: params[:gifts][:speaker], predicted: params[:gifts][:speaker], image: 'cb-speaker.png'])
 
-      #Bolso Playa
-      Gift.create!([type_g: 0, name: 'Bolso Playa', event_id: params[:event_id], inventory: params[:gifts][:bolso], predicted: params[:gifts][:bolso], image: 'cb-bolso.png'])
+      #Mochila
+      Gift.create!([type_g: 0, name: 'Mochila Absolut', event_id: params[:event_id], inventory: params[:gifts][:bag], predicted: params[:gifts][:bag], image: 'cb-bag.png'])
 
-      #Tshirt
-      Gift.create!([type_g: 0, name: 'T-shirt Absolut', event_id: params[:event_id], inventory: params[:gifts][:tshirt], predicted: params[:gifts][:tshirt], image: 'cb-tshirt.png'])
-      Gift.create!([type_g: 0, name: 'T-shirt Absolut', event_id: params[:event_id], inventory: params[:gifts][:tshirt1], predicted: params[:gifts][:tshirt1], image: 'cb-tshirt.png'])
-      Gift.create!([type_g: 0, name: 'T-shirt Absolut', event_id: params[:event_id], inventory: params[:gifts][:tshirt2], predicted: params[:gifts][:tshirt2], image: 'cb-tshirt.png'])
+      #Bolígrafo 3 en 1 Absolut
+      Gift.create!([type_g: 0, name: 'Bolígrafo 3 en 1 Absolut', event_id: params[:event_id], inventory: params[:gifts][:pencil], predicted: params[:gifts][:pencil], image: 'cb-pencil.png'])
+      Gift.create!([type_g: 0, name: 'Bolígrafo 3 en 1 Absolut', event_id: params[:event_id], inventory: params[:gifts][:pencil1], predicted: params[:gifts][:pencil1], image: 'cb-pencil.png'])
+      
+      #Especial
+      Gift.create!([type_g: 0, name: 'Especial Absolut', event_id: params[:event_id], inventory: params[:gifts][:special], predicted: params[:gifts][:special], image: 'cb-especial.png'])
+      
+      #Volver A intentar - Con este regalo utilizaremos el espacio para mostrar el volver a intentar - Tipo: 20
+      Gift.create!([type_g: 20, name: 'Volver a Intentar', event_id: params[:event_id], inventory: 1, predicted: 1, image: 'cb-volveraintentar.png'])
+      Gift.create!([type_g: 20, name: 'Volver a Intentar', event_id: params[:event_id], inventory: 1, predicted: 1, image: 'cb-volveraintentar.png'])
 
-      Gift.create!([type_g: 0, name: 'Gorra Absolut', event_id: params[:event_id], inventory: params[:gifts][:gorra], predicted: params[:gifts][:gorra], image: 'cb-gorra.png'])
-      Gift.create!([type_g: 0, name: 'Gorra Absolut', event_id: params[:event_id], inventory: params[:gifts][:gorra1], predicted: params[:gifts][:gorra1], image: 'cb-gorra.png'])
-
-      Gift.create!([type_g: 0, name: 'Absolut Breeze Shots', event_id: params[:event_id], inventory: params[:gifts][:cock], predicted: params[:gifts][:cock], image: 'cb-shot.png'])
-      Gift.create!([type_g: 0, name: 'Absolut Breeze Cocktail', event_id: params[:event_id], inventory: params[:gifts][:cock1], predicted: params[:gifts][:cock1], image: 'cb-copa.png'])
-
+    
       redirect_to event_path(params[:event_id]), notice: "Todos los regalos fueron creados"
     else
       redirect_to event_path(params[:event_id]), notice: "Ya este evento contiene Regalos. Por favor editarlos"

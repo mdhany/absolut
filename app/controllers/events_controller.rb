@@ -11,7 +11,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @gifts = @event.gifts
+    @gifts = @event.gifts.where('type_g != ?', 20)
   end
 
   # GET /events/new

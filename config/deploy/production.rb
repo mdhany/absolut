@@ -7,9 +7,9 @@
 
 set :stage, :production
 
-role :app, %w{deploy@absolutrd.com}
-role :web, %w{deploy@absolutrd.com}
-role :db,  %w{deploy@absolutrd.com}
+role :app, %w{deploy@159.203.162.242}
+role :web, %w{deploy@159.203.162.242}
+role :db,  %w{deploy@159.203.162.242}
 
 # Extended Server Syntax
 # ======================
@@ -17,7 +17,7 @@ role :db,  %w{deploy@absolutrd.com}
 # definition into the server list. The second argument
 # something that quacks like a hash can be used to set
 # extended properties on the server.
-server 'absolutrd.com', user: 'deploy', roles: %w{web app}, my_property: :my_value
+server 'absolutrd.com', user: 'deploy', roles: %w{web app}
 set :deploy_to, '/home/deploy/absolut'
 
 # you can set custom ssh options

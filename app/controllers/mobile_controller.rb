@@ -47,7 +47,8 @@ class MobileController < ApplicationController
       if gift.inventory > 0
         if gift.update_attribute :inventory, gift.inventory - 1
           if session[:gift] = gift.name
-            redirect_to djs_mobile_path
+            #redirect_to djs_mobile_path
+            redirect_to club_path
           end
         else
           logger.debug "No pudo ser guargado el gift"

@@ -3,55 +3,39 @@
 <%= form_tag({action: :creating_gifts}) do %>
 <h1>Generar Regalos</h1>
     <hr/>
-      <p>Inserte en cada regalo la cantidad disponible para este evento. Cada </p>
+      <p>Inserte en cada regalo la cantidad disponible para este evento.</p>
       <br/>
 <br/>
     <%= hidden_field_tag :event_id, params[:event_id] %>
   <div class="row">
       <div class="col-md-3 field">
-        <%= label_tag 'Special guest' %><br>
+        <%= label_tag 'Bluetooth Speaker Absolut' %><br>
         <div class="row">
-            <div class="col-md-12"><%= number_field_tag 'gifts[guest]',0, class: 'form-control' %></div>
+            <div class="col-md-12"><%= number_field_tag 'gifts[speaker]',0, class: 'form-control' %></div>
         </div>
       </div>
       <div class="col-md-3 field">
-        <%= label_tag 'Bolso Playa' %><br>
+        <%= label_tag 'Mochila Absolut' %><br>
         <div class="row">
-          <div class="col-md-12"><%= number_field_tag 'gifts[bolso]',0, class: 'form-control' %></div>
+          <div class="col-md-12"><%= number_field_tag 'gifts[bag]',0, class: 'form-control' %></div>
         </div>
 
       </div>
       <div class="col-md-6 field">
-        <%= label_tag 'T-shirt Absolut' %><br>
+        <%= label_tag 'Bolígrafo 3 en 1 Absolut' %><br>
         <div class="row">
-          <div class="col-md-4"><%= number_field_tag 'gifts[tshirt]',0, class: 'form-control' %></div>
-          <div class="col-md-4"><%= number_field_tag 'gifts[tshirt1]',0, class: 'form-control' %></div>
-          <div class="col-md-4"><%= number_field_tag 'gifts[tshirt2]',0, class: 'form-control' %></div>
+          <div class="col-md-6"><%= number_field_tag 'gifts[pencil]',0, class: 'form-control' %></div>
+          <div class="col-md-6"><%= number_field_tag 'gifts[pencil1]',0, class: 'form-control' %></div>
         </div>
 
       </div>
       <div class="col-md-6 field">
-        <%= label_tag 'Gorra Absolut' %><br>
+        <%= label_tag 'Regalo Especial' %><br>
         <div class="row">
-          <div class="col-md-6"><%= number_field_tag 'gifts[gorra]',0, class: 'form-control' %></div>
-          <div class="col-md-6"><%= number_field_tag 'gifts[gorra1]',0, class: 'form-control' %></div>
+          <div class="col-md-6"><%= number_field_tag 'gifts[special]',0, class: 'form-control' %></div>
         </div>
 
       </div>
-      <div class="col-md-3 field">
-        <%= label_tag 'Absolut Breeze Shots' %><br>
-        <div class="row">
-          <div class="col-md-12"><%= number_field_tag 'gifts[cock]',0, class: 'form-control' %></div>
-        </div>
-
-      </div>
-    <div class="col-md-3 field">
-      <%= label_tag 'Absolut Breeze Cocktail' %><br>
-      <div class="row">
-        <div class="col-md-12"><%= number_field_tag 'gifts[cock1]',0, class: 'form-control' %></div>
-      </div>
-
-    </div>
 
   </div>
       <div class="row">
