@@ -81,10 +81,12 @@ class GiftsController < ApplicationController
       
       #Especial
       Gift.create!([type_g: 0, name: 'Especial Absolut', event_id: params[:event_id], inventory: params[:gifts][:special], predicted: params[:gifts][:special], image: 'cb-especial.png'])
+      Gift.create!([type_g: 0, name: 'Especial Absolut', event_id: params[:event_id], inventory: params[:gifts][:special1], predicted: params[:gifts][:special1], image: 'cb-especial.png'])
+      Gift.create!([type_g: 0, name: 'Especial Absolut', event_id: params[:event_id], inventory: params[:gifts][:special2], predicted: params[:gifts][:special2], image: 'cb-especial.png'])
       
       #Volver A intentar - Con este regalo utilizaremos el espacio para mostrar el volver a intentar - Tipo: 20
-      Gift.create!([type_g: 20, name: 'Volver a Intentar', event_id: params[:event_id], inventory: 1, predicted: 1, image: 'cb-volveraintentar.png'])
-      Gift.create!([type_g: 20, name: 'Volver a Intentar', event_id: params[:event_id], inventory: 1, predicted: 1, image: 'cb-volveraintentar.png'])
+      #Gift.create!([type_g: 20, name: 'Volver a Intentar', event_id: params[:event_id], inventory: 1, predicted: 1, image: 'cb-volveraintentar.png'])
+      #Gift.create!([type_g: 20, name: 'Volver a Intentar', event_id: params[:event_id], inventory: 1, predicted: 1, image: 'cb-volveraintentar.png'])
 
     
       redirect_to event_path(params[:event_id]), notice: "Todos los regalos fueron creados"
