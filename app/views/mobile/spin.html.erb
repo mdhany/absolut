@@ -5,7 +5,11 @@
         <% if g.inventory > 0 %>
                 <div class="flip3D">
                     <div class="back" id="<%= g.id %>" nombre="<%= g.name %>"><%= image_tag g.image, class: 'img-responsive img-center' %></div>
+<<<<<<< HEAD
                     <div class="front"><%= image_tag "crc-limon.png", class: 'img-responsive img-center' %></div>
+=======
+                    <div class="front"><%= image_tag "c-#{i+1}.png", class: 'img-responsive img-center' %></div>
+>>>>>>> 9d7edc9c10147d76a7c0108b736248d292b34c25
                 </div>
         <% else %>
             <div class="nul-flip" style="display:none;">
