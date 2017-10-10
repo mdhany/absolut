@@ -1,0 +1,14 @@
+#Values for load config
+#Este archivo debería crearse aparte y no incluirlo en github pues contiene información sensible
+development:
+  app_id: '837510712948874' #TEST
+  secret_key: '4bf0d5d959b26c847088a736b7de5236' #TEST
+
+
+production:
+  app_id: '837507736282505'
+  secret_key: 'a9ebd394b195ba074b52c217bee7deb0'
+
+staging:
+  app_id: '837507736282505'
+  secret_key: 'a9ebd394b195ba074b52c217bee7deb0'

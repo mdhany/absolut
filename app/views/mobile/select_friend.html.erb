@@ -1,0 +1,92 @@
+<%= form_tag({action: :publishing_post}, multipart: true) do %>
+<div class="col-md-12">
+  <div id="foto">
+    <%= image_tag 'step-2.png', class: 'img-responsive img-center' %>
+    <div class="center-block fondo-gris">
+    <h1 class="mbottom" style="display:none;">Take a photo</h1>
+    <h1 class="mbottom">¡Muéstranos con quien brindas!</h1>
+    <div class="row">
+      <div class="col-md-8 mleft form-upload mbottom">
+        <%= file_field_tag :picture, capture: "camera", accept: "image/*", class: 'form-chivas' %>
+      </div>
+    </div>
+      <div class="row">
+        <%= link_to "javascript:;", id: 'b-foto' do %>
+            <%= image_tag 'btn-continuar.png', class: 'img-responsive img-center' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div id="tag" style="display: none;">
+    <%= image_tag 'step-2.png', class: 'img-responsive img-center' %>
+    <div class="center-block fondo-gris">
+      <h1 class="mbottom" style="display:none;">Tag your friends</h1>
+    <h1 class="mbottom">Tagea a tus amigos</h1>
+      <p>Selecciona por lo menos a tres de tus amigos.</p>
+    <div id="hacker-list">
+        <div class="overf-friend">
+            <input class="search chivas-form" placeholder="Buscar Amigo" />
+            <ul id="list_friend" class="list">
+              <% @friends.each_with_index do |f, i| %>
+                  <li id="friend<%= i %>" fb="<%= f['id'] %>">
+                    <%= image_tag f['picture']['data']['url'] %>
+                    <span class="nombre"><%= f['name'] %></span>
+                  </li>
+              <% end %>
+            </ul>
+        </div>
+    </div>
+        <%= link_to "javascript:;", id: 'b-tag' do %>
+            <%= image_tag 'btn-continuar.png', class: 'img-responsive img-center' %>
+        <% end %>
+    </div>
+  </div>
+
+  <div id="post" style="display: none;">
+    <%= image_tag 'step-3.png', class: 'img-responsive img-center' %>
+    <div class="center-block fondo-gris">
+    <h1 class="mbottom">Así lucirá tu publicación</h1>
+      <h1 class="mbottom text-hide" style="display: none;">Type your message</h1>
+    <%= image_tag 'false.png', class: 'img-responsive img-center mbottom', id: 'preview' %>
+    <%#= text_field_tag :post, nil, class: 'chivas-form', placeholder: 'Type here text' %>
+    <h4 id="mensaje-fb" class="mbottom"><%= "#{current_customer.entry.post} @ChivasDominicana" %></h4>
+    <%= link_to 'javascript:;', id: 'perm-fb', class: 'button-facebook' do %>Autorizar Facebook<% end %>
+    <%= image_submit_tag 'btn-sharefb.png', id: 'share-fb', style: 'display:none;' %>
+
+    </div>
+  </div>
+
+
+</div>
+
+<% end %>
+
+
+<script type="text/javascript" charset="utf-8">
+    //<![CDATA[
+
+
+
+    //Preview Image
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#preview').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#picture").change(function(){
+        readURL(this);
+    });
+
+
+    //]]>
+    </script>
+
+

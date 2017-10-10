@@ -1,0 +1,29 @@
+<p>
+  <strong>Nombre:</strong>
+  <%= @gift.name %>
+</p>
+
+<p>
+  <strong>Disponibles Actualmente:</strong>
+  <%= @gift.inventory %>
+</p>
+
+<p>
+  <strong>Presupuestados:</strong>
+  <%= @gift.predicted %>
+</p>
+
+<p>
+  <strong>Prioridad:</strong>
+  <%= @gift.priority %>
+</p>
+
+<p>
+  <strong>Evento:</strong>
+  <%= @gift.event.name %>
+</p>
+
+
+
+<%= link_to 'Editar', edit_gift_path(@gift) %> |
+<%= link_to 'Volver a Evento', event_path(@gift.event) %>

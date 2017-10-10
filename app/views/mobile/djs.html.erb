@@ -1,0 +1,37 @@
+<div id="dj" class="center-block">
+  <h1 class="text-hide mbottom"><%= image_tag 'tl-dj.png', class: 'img-responsive img-center' %>Selecciona un DJ</h1>
+  <h4 class="mbottom">Elige qué DJ quieres que toque en la fiesta</h4>
+
+<div class="row">
+    <% @djs.each do |d| %>
+    <div class="col-xs-4">
+      <%= form_tag create_vote_path  do %>
+          <%= hidden_field_tag :dj_id, d.id %>
+          <%= image_submit_tag "#{d.image}", data: { disable_with: "Por favor esperar..." } , class: 'img-responsive send' %>
+      <% end %>
+
+    </div>
+    <% end %>
+</div>
+  <p class="text-hide" style="margin-bottom: 60px; color: black;">.</p>
+  <h4 class="mbottom">Con tu voto, tendrás la oportunidad de ganar boletos <br/>para la gran fiesta que tenemos preparada para ti.
+  </h4>
+</div>
+
+
+
+<script type="text/javascript" charset="utf-8">
+    //<![CDATA[
+    $(document).ready(function() {
+        //Deshabilitando los botones: No funciona en Firefox
+        $('.col-xs-4 > form').submit(function(){
+            var btn = $(this).find("input[type=image]:focus");
+            $(btn).attr("disabled", "disabled");
+            $(btn).fadeTo( "fast", 0.33 );
+        })
+
+
+    })
+
+    //]]>
+</script>

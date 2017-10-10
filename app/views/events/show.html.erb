@@ -1,0 +1,60 @@
+<h1> <%= @event.name %></h1>
+<hr/>
+
+<p>
+  <strong>Lugar:</strong>
+  <%= @event.place %>
+  |
+  <strong>Fecha de Evento:</strong>
+  <%= @event.d_event %>
+</p>
+
+<p>
+
+</p>
+
+
+<div class="portlet box gold">
+  <div class="portlet-title">
+    <div class="caption"><i class="icon-cogs"></i>Regalos para Evento</div>
+    <div class="tools">
+      <a class="collapse" href="javascript:;"></a>
+      <a class="config" data-toggle="modal" href="#portlet-config"></a>
+      <a class="reload" href="javascript:;"></a>
+      <a class="remove" href="javascript:;"></a>
+    </div>
+  </div>
+  <div class="portlet-body">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Presupuestados</th>
+          <th class="">Disponibles Actualmente</th>
+
+
+          <th colspan="1"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @gifts.each do |g| %>
+            <tr>
+              <td><%= g.id %></td>
+              <td><%= g.name %></td>
+              <td><%= g.predicted %></td>
+              <td><%= g.inventory %></td>
+              <td><%= link_to 'Editar', edit_gift_path(g) %></td>
+            </tr>
+       <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<hr/>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

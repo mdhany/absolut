@@ -1,0 +1,129 @@
+
+<html>
+<head>
+    <title>Chivas Nights</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" media="screen" href="/assets/font-awesome/css/font-awesome.min.css?body=1" data-turbolinks-track="true">
+    <link rel="stylesheet" media="screen" href="/assets/bootstrap/css/bootstrap.min.css?body=1" data-turbolinks-track="true">
+    <link rel="stylesheet" media="screen" href="/assets/mobiles_layout.css?body=1" data-turbolinks-track="true">
+
+    <script src="/assets/jquery.js?body=1" data-turbolinks-track="true"></script>
+    <script src="/assets/jquery_ujs.js?body=1" data-turbolinks-track="true"></script>
+    <script src="/assets/turbolinks.js?body=1" data-turbolinks-track="true"></script>
+    <script src="/assets/jquery-migrate-1.2.1.min.js?body=1" data-turbolinks-track="true"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js?body=1" data-turbolinks-track="true"></script>
+
+    <script src="/assets/admin/app.js?body=1" data-turbolinks-track="true"></script>
+    <script src="/assets/list.js?body=1" data-turbolinks-track="true"></script>
+    <script src="/assets/application.js?body=1" data-turbolinks-track="true"></script>
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '837510712948874',
+                xfbml      : false,
+                version    : 'v2.1'
+            });
+
+            FB.getLoginStatus(function (response) {
+                if (response.status === 'connected') {
+                    console.log('GetSTATUS');
+                    console.log(response);
+
+                    FB.api(
+                            "/me/taggable_friends",
+                            function (response) {
+                                if (response && !response.error) {
+                                    /* handle the result */
+                                    console.log('Loading Friends');
+                                    console.log(response);
+
+                                    carga(response.data);
+                                }
+                            }
+                    );
+                }
+            });
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        function carga(response){
+            $.each( response, function( i, f ){
+                $('<li id="friend'+i+'" fb="'+ f['id']+'">' +
+                                '<img src="'+ f['picture']['data']['url']+'">' +
+                                '<span class="nombre">'+ f['name']+'</span>' +
+                                '</li>'
+                ).appendTo('#list_friend');
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            $('#list_friend').on("click", "li", function() {
+                id = $(this).attr("id");
+                fb = $(this).attr("fb");
+
+                if ($(this).hasClass('active')) {
+                    $('input#friends[id]').remove();
+                    $(this).removeClass('active');
+                } else {
+                    //Add input hidden for form
+                    $('<input>').attr({
+                        type: 'hidden',
+                        id: 'friends[' + id + ']',
+                        name: 'friends[' + id + ']',
+                        value: fb
+                    }).appendTo('#tag');
+                    //Agregar clase activo al listado clikeado
+                    $(this).addClass('active');
+                    //Agregar Nombres a preview
+                    $('<span>, ' + $(this).text() + '</span>').appendTo('#mensaje-fb');
+                }
+            });
+
+        });
+
+
+    </script>
+</head>
+<body class="mobile">
+
+<img src="http://i.stack.imgur.com/tmS9T.jpg?s=32&g=1">
+<div id="tag" style="">
+    <div class="center-block fondo-gris">
+        <h1 class="mbottom">Tagea a tus amigos</h1>
+        <h1 class="mbottom text-hide">Tag your friends</h1>
+        <p>Selecciona por lo menos a tres de tus amigos.</p>
+        <div id="hacker-list">
+
+            <div class="overf-friend">
+                <input class="search chivas-form" placeholder="Buscar Amigo" />
+                <ul id="list_friend" class="list">
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" charset="utf-8">
+    //<![CDATA[
+
+    //Search for Listing Friend
+    var options = {
+        valueNames: [ 'nombre' ]
+    };
+
+    var hackerList = new List('hacker-list', options);
+
+    //]]>
+</script>
+
+
+</body></html>

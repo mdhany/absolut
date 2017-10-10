@@ -1,0 +1,122 @@
+<%= form_for(@customer) do |f| %>
+  <% if @customer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+
+      <ul>
+      <% @customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label 'Nombres y Apellidos ' %><span class="red">*</span><br>
+    <%= f.text_field :name, class: 'chivas-form', required: 'required' %>
+  </div>
+  <div class="field">
+    <%= f.label 'Fecha de Nacimiento' %><span class="red">*</span><br>
+    <%#= f.date_select :birth, include_blank: true, start_year: 1940, end_year: 1999,  class: 'chivas-form' %>
+    <%= f.date_select :birth,  prompt: { day: 'Día', month: 'Mes', year: 'Año' }, start_year: 1940, end_year: 1999,  class: 'chivas-form' %>
+  </div>
+  <div class="field">
+    <%= f.label 'Ciudad' %><br>
+    <%= f.text_field :city, class: 'chivas-form' %>
+  </div>
+  <div class="field">
+    <%= f.label 'Móvil' %><br>
+    <%= f.text_field :mobile, class: 'chivas-form' %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><span class="red">*</span><br>
+    <%= f.email_field :email, class: 'chivas-form', required: 'required' %>
+  </div>
+  <div class="field">
+    <%= f.label 'Algunos de sus intereses:' %><br>
+    <div class="checkes">
+        <input type="checkbox" value="Eventos Gastronómicos" id="i1"> <label for="i1">Eventos Gastronómicos</label><br>
+        <input type="checkbox" value="Eventos Sociales" id="i2"><label for="i2">Eventos Sociales</label><br>
+        <input type="checkbox" value="Fiestas o Conciertos" id="i3"><label for="i3">Fiestas o Conciertos</label> <br/>
+        <input type="checkbox" value="Catas" id="i4"> <label for="i4">Catas</label><br/>
+        <input type="checkbox" value="Torneos" id="i5"> <label for="i5">Torneos</label><br/>
+        <input type="checkbox" value="Club de Descuentos o Regalos" id="i6"> <label for="i6">Club de Descuentos o Regalos</label><br/> <br/>
+    </div>
+    <%= f.text_field :interest, class: 'chivas-form' %>
+
+
+  </div>
+  <div class="actions">
+    <%= f.submit {[class: 'btn btn-lg']}%>
+  </div>
+    <br/>
+    <%= link_to "Consumidor sin data", {controller: 'mobile', action: 'no_customer_filled'}, class: 'btn-secundario', method: :post %>
+<% end %>
+
+<%= javascript_tag do -%>
+
+    $(document).ready(function(){
+    $checks = $(":checkbox");
+    $checks.on('click', function() {
+    var string = $checks.filter(":checked").map(function(i,v){
+    return this.value;
+    }).get().join(", ");
+    $('#customer_interest').val(string);
+    });
+    });
+
+
+<% end -%>
+
+<%= javascript_tag do -%>
+
+$(document).ready(function () {
+// add required to date
+$( "#customer_birth_3i" ).attr( "required", "required" );
+$( "#customer_birth_2i" ).attr( "required", "required" );
+$( "#customer_birth_1i" ).attr( "required", "required" );
+
+    $("#new_customer").validate({
+        rules: {
+            'customer[name]': "required",
+            'customer[birth(3i)]': {
+                required: true
+            },
+            'customer[birth(2i)]': {
+                required: true
+            },
+            'customer[birth(1i)]': {
+                required: true
+            },
+            'customer[email]': {
+                required: true,
+                email: true
+            }
+        },
+        messages: {
+            'customer[name]': "Este campo es requerido",
+            'customer[birth(3i)]': "Seleccione una opción",
+            'customer[birth(2i)]': "Seleccione una opción",
+            'customer[birth(1i)]': "Seleccione una opción",
+            'customer[email]': "Digite un email válido"
+        }
+    })
+})
+
+$ = jQuery.noConflict();
+
+<% end -%>
+
+<script type="text/javascript" charset="utf-8">
+    //<![CDATA[
+    $(document).ready(function() {
+        //Deshabilitando los botones: No funciona en Firefox
+        $('#new_customer').submit(function(){
+            var btn = $(this).find("input[type=submit]:focus");
+            $(btn).attr("disabled", "disabled"), $(btn).val("Por favor espere...")
+            $(btn).fadeTo( "fast", 0.33 );
+        })
+    })
+
+    //]]>
+</script>

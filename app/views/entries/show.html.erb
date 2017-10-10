@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @entry.customer_id %>
+</p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @entry.event_id %>
+</p>
+
+<p>
+  <strong>Post:</strong>
+  <%= @entry.post %>
+</p>
+
+<p>
+  <strong>Gift:</strong>
+  <%= @entry.gift %>
+</p>
+
+<%= link_to 'Edit', edit_entry_path(@entry) %> |
+<%= link_to 'Back', entries_path %>

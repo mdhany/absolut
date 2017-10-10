@@ -1,0 +1,52 @@
+<div class="row">
+<div class="col-md-12">
+<%= form_tag({action: :creating_gifts}) do %>
+<h1>Generar Regalos</h1>
+    <hr/>
+      <p>Inserte en cada regalo la cantidad disponible para este evento.</p>
+      <br/>
+<br/>
+    <%= hidden_field_tag :event_id, params[:event_id] %>
+  <div class="row">
+      <div class="col-md-6 field">
+        <%= label_tag 'Tumbler Absolut' %><br>
+        <div class="row">
+          <div class="col-md-2"><%= number_field_tag 'gifts[tumbler]',0, class: 'form-control' %></div>
+          <div class="col-md-2"><%= number_field_tag 'gifts[tumbler1]',0, class: 'form-control' %></div>
+          <div class="col-md-2"><%= number_field_tag 'gifts[tumbler2]',0, class: 'form-control' %></div>
+          <div class="col-md-2"><%= number_field_tag 'gifts[tumbler3]',0, class: 'form-control' %></div>
+        </div>
+
+      </div>
+      <div class="col-md-6 field">
+        <%= label_tag 'Gorra Absolut' %><br>
+        <div class="row">
+          <div class="col-md-2"><%= number_field_tag 'gifts[gorra]',0, class: 'form-control' %></div>
+          <div class="col-md-2"><%= number_field_tag 'gifts[gorra1]',0, class: 'form-control' %></div>
+          <div class="col-md-2"><%= number_field_tag 'gifts[gorra2]',0, class: 'form-control' %></div>
+          <div class="col-md-2"><%= number_field_tag 'gifts[gorra3]',0, class: 'form-control' %></div>
+          <div class="col-md-2"><%= number_field_tag 'gifts[gorra4]',0, class: 'form-control' %></div>
+        </div>
+
+      </div>
+
+  </div>
+      <div class="row">
+          <div class="col-md-12 field">
+            <%= submit_tag 'Crear' %>
+          </div>
+      </div>
+</div>
+<% end %>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+    //<![CDATA[
+
+    $('#gifts_glasses').click(function() {
+
+
+    });
+
+    //]]>
+</script>

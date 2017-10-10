@@ -1,0 +1,7 @@
+<h2>Seleciona el Evento</h2>
+<%= form_tag edit_collector_event_path do %>
+    <%= select_tag :event_id, options_for_select(@events.collect { |e| [ e.name, e.id ] }), class: 'form-control' %>
+    <br/>
+    <%= submit_tag 'Guardar', class: 'btn btn-lg' %>
+
+<% end %>

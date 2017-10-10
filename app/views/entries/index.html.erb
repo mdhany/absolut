@@ -1,0 +1,54 @@
+<h1>Entradas</h1>
+
+<div class="portlet box gold">
+  <div class="portlet-title">
+    <div class="caption">Datos</div>
+    <div class="tools">
+      <a class="collapse" href="javascript:;"></a>
+      <a class="config" data-toggle="modal" href="#portlet-config"></a>
+      <a class="reload" href="javascript:;"></a>
+      <a class="remove" href="javascript:;"></a>
+    </div>
+  </div>
+  <div class="portlet-body">
+    <div class="table-responsive">
+      <table class="table table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Consumidor</th>
+      <th>Evento</th>
+      <th>Promotora</th>
+      <th>Regalo</th>
+      <th>Fecha</th>
+      <th colspan="2"></th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @entries.each_with_index do |entry, i| %>
+      <tr>
+        <td><%= i+1 %></td>
+        <% if entry.customer.nil? %>
+            <td class="gris">SIN DATA</td>
+        <% else %>
+            <td><%= link_to entry.customer.name, customer_path(entry.customer) %></td>
+        <% end %>
+        <td><%= entry.event.name if !nil? %></td>
+        <td><%= entry.collector.name if !nil? %></td>
+        <td><%= entry.gift %></td>
+        <td><%= entry.created_at.to_date %></td>
+        <% if current_user.email == "melvin@cspmconsulting.com" %>
+            <td><%= link_to 'Eliminar', entry, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<br>
+

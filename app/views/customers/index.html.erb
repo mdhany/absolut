@@ -1,0 +1,47 @@
+<h1>Consumidores</h1>
+
+<div class="portlet box gold">
+  <div class="portlet-title">
+    <div class="caption">Datos</div>
+    <div class="tools">
+      <a class="collapse" href="javascript:;"></a>
+      <a class="config" data-toggle="modal" href="#portlet-config"></a>
+      <a class="reload" href="javascript:;"></a>
+      <a class="remove" href="javascript:;"></a>
+    </div>
+  </div>
+  <div class="portlet-body">
+    <div class="table-responsive">
+      <table class="table table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Consumidor</th>
+      <th>Nacimiento</th>
+      <th>Ciudad</th>
+      <th>Móvil</th>
+      <th>Email</th>
+      <th>Intereses</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each_with_index do |customer, i| %>
+      <tr>
+        <td><%= i+1 %></td>
+        <td><%= customer.name %></td>
+        <td><%= customer.birth %></td>
+        <td><%= customer.city %></td>
+        <td><%= customer.mobile %></td>
+        <td><%= customer.email %></td>
+        <td><small><%= customer.interest %></small></td>
+        <td><%= link_to 'Ver', customer %></td>
+        <td><%= link_to 'Eliminar', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+      </table>
+    </div>
+  </div>
+</div>

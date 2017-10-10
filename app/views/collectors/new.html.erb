@@ -1,0 +1,32 @@
+<h2>Crear Promotora</h2>
+
+<%= form_for(@collector) do |f| %>
+    <% if @collector.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@collector.errors.count, "error") %> prohibited this collector from being saved:</h2>
+
+          <ul>
+            <% @collector.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+
+    <div><%= f.label :name %><br />
+      <%= f.text_field :name %></div>
+
+    <div><%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true %></div>
+
+    <div><%= f.label 'Nueva Contraseña' %> <i></i><br />
+      <%= f.password_field :password, autocomplete: "off" %></div>
+
+    <div><%= f.label 'Confirmacion de Contraseña' %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+
+    <div><%= f.submit "Crear" %></div>
+<% end %>
+
+<%= link_to "Back", :back %>

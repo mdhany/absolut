@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Facebook Login JavaScript Example</title>
+    <meta charset="UTF-8">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+<script>
+    $(document).ready(function() {
+        $.ajaxSetup({ cache: true });
+        $.getScript('//connect.facebook.net/en_UK/all.js', function(){
+            FB.init({
+                appId: '837510712948874',
+                cookie     : true,
+                xfbml      : true,
+                version    : 'v2.1'
+            });
+            $('#loginbutton,#feedbutton').removeAttr('disabled');
+            FB.getLoginStatus(updateStatusCallback);
+        });
+
+        function updateStatusCallback(response) {
+            console.log('statusChangeCallback');
+            console.log(response);
+            // The response object is returned with a status field that lets the
+            // app know the current login status of the person.
+            // Full docs on the response object can be found in the documentation
+            // for FB.getLoginStatus().
+            if (response.status === 'connected') {
+                // Logged into your app and Facebook.
+                accionfb();
+            } else if (response.status === 'not_authorized') {
+                // The person is logged into Facebook, but not your app.
+                document.getElementById('status').innerHTML = 'Please log ' +
+                        'into this app.';
+            } else {
+                // The person is not logged into Facebook, so we're not sure if
+                // they are logged into this app or not.
+                document.getElementById('status').innerHTML = 'Please log ' +
+                        'into Facebook.';
+            }
+        }
+
+        function accionfb() {
+            var urlimg = "http://www.desmotivar.com/img/desmotivaciones/108901_en-la-vida-hay-que-caer--levantarse-amar.jpg"
+            FB.api(
+                    "/me/photos",
+                    "POST",
+                    {
+                        "url": urlimg,
+                        "message": "Compartiendo",
+                        "place": "186521351396339"
+                    },
+                    function (response) {
+                        if (response && !response.error) {
+                            /* handle the result */
+                            console.log('Imagen Publicada:'+ response.id);
+                            var idphoto = response.id
+                            tagueando(idphoto);
+
+
+
+                        } else {
+                            console.log(response.error)
+                        }
+                    }
+            );
+
+        }
+        function tagueando(idphoto) {
+            FB.api(
+                    "/"+idphoto+"/tags",
+                    "POST",
+                    {
+                        "tags": "[{'tag_uid':'AaKiSg5940Scd9xArpAquaSEzEIo7n3xVM2GSSLqBwp3SXiOVpj2wr9FIGaEOZNJBfv-cKKnsIv5QIiCK4HLRw8FQ-Bj-Q5fzAfzfd1gpshsCg'}]"
+                    },
+                    function (response) {
+                        if (response && !response.error) {
+                            /* handle the result */
+                            console.log('Tageando amigos:' + response);
+                        } else {
+                            console.log(response.error)
+                        }
+                    }
+            );
+        }
+    });
+</script>
+
+<!--
+  Below we include the Login Button social plugin. This button uses
+  the JavaScript SDK to present a graphical Login button that triggers
+  the FB.login() function when clicked.
+-->
+
+<fb:login-button scope="public_profile,email,publish_actions,user_friends,user_photos" onlogin="checkLoginState();">
+</fb:login-button>
+
+<div id="status">
+</div>
+
+<ul id="users">
+</ul>
+
+
+</body>
+</html>
+<script>
+//SOCIAL
+    //<![CDATA[
+    //Cargando los FB assets
+    $(document).ready(function() {
+        $.ajaxSetup({ cache: true });
+        $.getScript('//connect.facebook.net/en_UK/all.js', function(){
+            FB.init({
+                appId: '<%= Facebook::APP_ID.to_s %>',
+                cookie     : true,
+                xfbml      : true,
+                version    : 'v2.1'
+            });
+            FB.getLoginStatus(updateStatusCallback);
+        });
+
+        //FUNCTION: Verificar el Estado de coneccion con FB
+        function updateStatusCallback(response) {
+            console.log('statusChangeCallback');
+            console.log(response);
+            // The response object is returned with a status field that lets the
+            // app know the current login status of the person.
+            // Full docs on the response object can be found in the documentation
+            // for FB.getLoginStatus().
+            if (response.status === 'connected') {
+                // Logged into your app and Facebook.
+                //ponerle el link para ir a la siguiente accion
+                $("#login-fb-btn").attr("href", "<%= select_friend_path %>").show('fast');
+
+            } else {
+                // The person is not logged into Facebook, so we're not sure if
+                // they are logged into this app or not.
+                console.log('Please log ' + 'into Facebook.');
+                //Si no esta conectado: Logguear
+                $('#login-fb-btn').show('fast');
+                $('#login-fb-btn').click(function () {
+                    loginToFb();
+                });
+            }
+        }
+
+        function loginToFb() {
+            FB.login(function (response) {
+                if (response.status === 'connected') {
+                    // Logged into your app and Facebook.
+                    //console.log(response.authResponse.accessToken);
+                    window.location.href = "<%= select_friend_path %>";
+
+                } else {
+                    // The person is not logged into Facebook, so we're not sure if
+                    // they are logged into this app or not.
+                    console.log('Not logged to Facebook or APP');
+                }
+            }, {scope: 'public_profile,email,user_friends'});
+        }
+
+
+
+
+    });
+    //]]>
+</script>
+
+
+<script type="text/javascript">
+//ESTA ES DE SELECT_FRIEND
+    //<![CDATA[
+    // Load the SDK asynchronously
+    $(document).ready(function() {
+        $.ajaxSetup({ cache: true });
+        $.getScript('//connect.facebook.net/en_UK/all.js', function() {
+            FB.init({
+                appId: '<%= Facebook::APP_ID.to_s %>',
+                cookie: true,
+                xfbml: true,
+                version: 'v2.1'
+            });
+
+
+            FB.getLoginStatus(function (response) {
+                if (response.status === 'connected') {
+                    console.log('Get Login STATUS');
+                    console.log(response);
+                    //Calling function Load friends
+                    loadFriends();
+                }
+            });
+
+
+            //Share Picture In Wall
+            //Tomar la imagen y publicarla
+            //Agregarle los tags
+            //Redireccionar a la ruleta
+            //Share Picture In Wall
+
+        });
+
+        //Carga de todos los amigos
+        function loadFriends(response){
+            FB.api(
+                    "/me/taggable_friends",
+                    function (response) {
+                        if (response && !response.error) {
+                            /* handle the result */
+                            console.log('Loading Friends');
+                            console.log(response);
+
+                            jQuery.each( response.data, function( i, f ){
+                                $('<li id="friend'+i+'" fb="'+ f['id']+'">' +
+                                                '<img src="'+ f['picture']['data']['url']+'">' +
+                                                '<span class="nombre">'+ f['name']+'</span>' +
+                                                '</li>'
+                                ).appendTo('#list_friend');
+                            });
+
+                            //Search for Listing Friend
+                            var options = {
+                                valueNames: [ 'nombre' ]
+                            };
+
+                            var hackerList = new List('hacker-list', options);
+                        }
+                    }
+            );
+
+        } //LOAD FRIENDS
+
+        function permisions() {
+            FB.login(function (response) {
+                if (response.status === 'connected') {
+                    // Logged into your app and Facebook.
+                    //console.log(response.authResponse.accessToken);
+                    //Cargar PHoto
+                    console.log('Autorizando para publicar');
+                    //Taguear
+                    //Mensaje que diga que ha sido publicado por log y front
+
+                } else {
+                    // The person is not logged into Facebook, so we're not sure if
+                    // they are logged into this app or not.
+                    console.log('Permisions not got it for Facebook or APP');
+                }
+            }, {scope: 'publish_actions, user_photos'});
+        }
+
+        $('#share-fb').click(function() {
+            permisions();
+        });
+
+    });
+
+    //]]>
+</script>
+
+<script type="text/javascript">
+//SPIN
+    //<![CDATA[
+    // Load the SDK asynchronously
+    $(document).ready(function() {
+        $.ajaxSetup({ cache: true });
+        $.getScript('//connect.facebook.net/en_UK/all.js', function() {
+            FB.init({
+                appId: '<%= Facebook::APP_ID.to_s %>',
+                cookie: true,
+                xfbml: true,
+                version: 'v2.1'
+            });
+
+
+            FB.getLoginStatus(function (response) {
+                // if (response.status === 'connected') {
+                console.log('Get Login STATUS');
+                console.log(response);
+                //Calling function Load friends
+                photo();
+                // }
+            });
+
+        });
+
+
+
+        //Posting Picture
+        function photo() {
+            FB.api(
+                    "/me/photos",
+                    "POST",
+                    {
+                        "url": "<%= @image %>",
+                        "message": "<%= params[:post] %>",
+                        "place": "190047084367045"
+                    },
+                    function (response) {
+                        if (response && !response.error) {
+                            /* handle the result */
+                            console.log('Imagen Publicada:'+ response.id);
+                            var idphoto = response.id
+                            //Tag friends
+                            tagueando(idphoto);
+
+                        } else {
+                            console.log(response.error)
+                        }
+                    }
+            );
+
+        }
+
+        //TaggFriends
+        function tagueando(idphoto) {
+            var friends =  <%== params[:friends].values %>
+            FB.api(
+
+                            "/"+idphoto+"/tags",
+                    "POST",
+                    {
+                        "tags": "[" +
+                                $.each(friends, function( i, f ) {
+                                    "{'tag_uid':'" + f[i] +"'},"
+                                })
+                                + "]"
+                    },
+                    function (response) {
+                        if (response && !response.error) {
+                            /* handle the result */
+                            console.log('Tageando amigos:' + response);
+                        } else {
+                            console.log(response.error)
+                        }
+                    }
+            );
+        } //TaggFriends
+
+    });
+
+    //]]>
+</script>

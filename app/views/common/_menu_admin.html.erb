@@ -1,0 +1,32 @@
+<li class="start active">
+  <a href="javascript:;">
+    <i class="icon-cogs"></i>
+    <span class="title">Administrador</span>
+    <span class="selected"></span>
+    <span class="arrow open"></span>
+  </a>
+  <ul class="sub-menu">
+    <li >
+      <%= link_to 'Aulas', admin_rooms_path %>
+    </li>
+    <li >
+      <%= link_to 'Pagos', admin_payments_path %>
+    </li>
+    <li >
+      <%= link_to 'Activaciones', admin_activations_path %>
+    </li>
+    <li >
+      <%= link_to "Finanzas / Cupones", admin_coupons_path %>
+    </li>
+    <li >
+      <%= link_to "Usuarios", admin_logins_path %>
+    </li>
+    <li >
+      <%= link_to "Niveles", admin_levels_path %>
+    </li>
+    <li >
+      <%= link_to "Paginas", admin_pages_path %>
+    </li>
+
+  </ul>
+</li>
