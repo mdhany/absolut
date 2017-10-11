@@ -1,6 +1,6 @@
 class Devise::RegistrationsController < DeviseController
   prepend_before_filter :require_no_authentication, only: [:cancel ]
-  prepend_before_filter :authenticate_scope!, only: [:new, :create, :destroy]
+  prepend_before_filter :authenticate_scope!, only: [:destroy] #:new, :create,
 
   # GET /resource/sign_up
   def new
