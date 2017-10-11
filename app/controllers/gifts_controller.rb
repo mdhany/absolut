@@ -69,7 +69,6 @@ class GiftsController < ApplicationController
   def creating_gifts
     g = Event.find params[:event_id]
     if g.gifts.blank?
-<<<<<<< HEAD
 
       #Tumbler (Termo)
       Gift.create!([type_g: 0, name: 'Tumbler Absolut', event_id: params[:event_id], inventory: params[:gifts][:tumbler], predicted: params[:gifts][:tumbler], image: 'cb-termo.png'])
@@ -84,23 +83,6 @@ class GiftsController < ApplicationController
       Gift.create!([type_g: 0, name: 'Gorra Absolut', event_id: params[:event_id], inventory: params[:gifts][:gorra3], predicted: params[:gifts][:gorra3], image: 'cb-gorra.png'])
       Gift.create!([type_g: 0, name: 'Gorra Absolut', event_id: params[:event_id], inventory: params[:gifts][:gorra4], predicted: params[:gifts][:gorra4], image: 'cb-gorra.png'])
 
-=======
-      #Speaker
-      Gift.create!([type_g: 0, name: 'Bluetooth Speaker Absolut', event_id: params[:event_id], inventory: params[:gifts][:speaker], predicted: params[:gifts][:speaker], image: 'cb-speaker.png'])
-
-      #Mochila
-      Gift.create!([type_g: 0, name: 'Mochila Absolut', event_id: params[:event_id], inventory: params[:gifts][:bag], predicted: params[:gifts][:bag], image: 'cb-bag.png'])
-
-      #Bolígrafo 3 en 1 Absolut
-      Gift.create!([type_g: 0, name: 'Bolígrafo 3 en 1 Absolut', event_id: params[:event_id], inventory: params[:gifts][:pencil], predicted: params[:gifts][:pencil], image: 'cb-pencil.png'])
-      Gift.create!([type_g: 0, name: 'Bolígrafo 3 en 1 Absolut', event_id: params[:event_id], inventory: params[:gifts][:pencil1], predicted: params[:gifts][:pencil1], image: 'cb-pencil.png'])
-      
-      #Especial
-      Gift.create!([type_g: 0, name: 'Especial Absolut', event_id: params[:event_id], inventory: params[:gifts][:special], predicted: params[:gifts][:special], image: 'cb-especial.png'])
-      Gift.create!([type_g: 0, name: 'Especial Absolut', event_id: params[:event_id], inventory: params[:gifts][:special1], predicted: params[:gifts][:special1], image: 'cb-especial.png'])
-      Gift.create!([type_g: 0, name: 'Especial Absolut', event_id: params[:event_id], inventory: params[:gifts][:special2], predicted: params[:gifts][:special2], image: 'cb-especial.png'])
-      
->>>>>>> 9d7edc9c10147d76a7c0108b736248d292b34c25
       #Volver A intentar - Con este regalo utilizaremos el espacio para mostrar el volver a intentar - Tipo: 20
       #Gift.create!([type_g: 20, name: 'Volver a Intentar', event_id: params[:event_id], inventory: 1, predicted: 1, image: 'cb-volveraintentar.png'])
       #Gift.create!([type_g: 20, name: 'Volver a Intentar', event_id: params[:event_id], inventory: 1, predicted: 1, image: 'cb-volveraintentar.png'])

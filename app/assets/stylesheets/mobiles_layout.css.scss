@@ -78,10 +78,6 @@ body.mobile .btn-black{
     font-weight: bold;
     color: #000;
 }
-body.mobile .btn-black{
-    background-color: #1b1b1b;
-
-}
 body.mobile .btn-lg{
     padding: 20px 80px;
     font-size: 20px;
@@ -111,7 +107,6 @@ body.mobile #club .field{
 }
 body.mobile #club input[type="submit"]{
     background-color: #fff;
-    background-color: #63666a;
     color: #000;
     padding: 20px 80px;
     font-size: 20px;
@@ -143,8 +138,6 @@ body.mobile #club .checkes label:before {
   bottom: 3px;
   background-color: #fff;
   border: 1px solid #15863e;
-  background-color: #000;
-  border: 1px solid #fff;
   }
 
 body.mobile #club .checkes input[type=checkbox]:checked + label:before {
@@ -156,7 +149,7 @@ body.mobile #club .checkes input[type=checkbox]:checked + label:before {
 }
 
 body.mobile .chivas-form{
-    background: none repeat scroll 0 0 #fff;
+     background: none repeat scroll 0 0 #fff;
     border: 2px solid #15863e;
     border-radius: 2px;
     color: #000;
@@ -164,16 +157,6 @@ body.mobile .chivas-form{
     font: 16px Arial,sans-serif;
     margin: 0px 0 20px;
   color: #ffffff;
-}
-
-body.mobile .chivas-form{
-    background: none repeat scroll 0 0 #000;
-    border: 2px solid #fff;
-    border-radius: 2px;
-    color: #fff;
-    display: block;
-    font: 16px Arial,sans-serif;
-    margin: 0 0 20px;
     max-width: 100%;
     outline: medium none;
     padding: 15px 4px;
@@ -185,8 +168,6 @@ body.mobile #club select{
     -moz-appearance: none;
     background: #fff;
     border: 2px solid #15863e;
-    background: #000;
-    border: 2px solid #fff;
     box-sizing: border-box;
     height: 42px;
     min-width: 140px;
@@ -198,11 +179,8 @@ body.mobile #club select{
 
 #club .red{ color: red}
 #club label.error{ color: white; background-color: red; font-size: 10px !important; display: block; padding: 3px; margin-top: 0px;
-    color: white;
 }
 
-#club .red{ color: red}
-#club label.error{ color: red; font-size: 14px; display: block;}
 
 body.mobile input#picture{
   display: block;
