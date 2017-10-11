@@ -20,10 +20,10 @@ class Devise::RegistrationsController < DeviseController
         set_flash_message :notice, :signed_up if is_flashing_format?
         #sign_up(resource_name, resource)
 
-        if Rails.env.production?
+        #if Rails.env.production?
           #Send Welcome Email
-          UserMailer.welcome(resource).deliver
-        end
+          #UserMailer.welcome(resource).deliver
+        #end
 
         #respond_with resource, location: after_sign_up_path_for(resource)
         redirect_to collector_index_path
