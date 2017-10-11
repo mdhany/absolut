@@ -23,19 +23,19 @@ class CollectorsController < ApplicationController
   #def edit
   #end
 
-  def new
-    @collector = Collector.new
-  end
+  #def new
+   # @collector = Collector.new
+  #end
 
-  def create
-    @collector = Collector.new(collector_params)
-
-      if @collector.save
-        redirect_to collectors_path
-      else
-        render :new
-      end
-  end
+  #def create
+   # @collector = Collector.new(collector_params)
+#
+ #     if @collector.save
+  #      redirect_to collectors_path
+   #   else
+    #    render :new
+     # end
+ # end
 
 
   #def update

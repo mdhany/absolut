@@ -34,9 +34,9 @@ Rails.application.routes.draw do
   #resources :collectors
   get 'collectors', to: 'collectors#index', as: 'collector_index'
 
-  get 'collectors/new', to: 'collectors#new', as: 'new_collector'
+  #get 'collectors/new', to: 'collectors#new', as: 'new_collector'
   #get 'collectors/edit/:id', to: 'collectors#edit', as: 'edit_collector'
-  post 'collectors/:id', to: 'collectors#create'
+  #post 'collectors/:id', to: 'collectors#create'
   #post 'collectors/:id', to: 'collectors#update'
   #put 'collectors/:id', to: 'collectors#update'
 
